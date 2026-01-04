@@ -1,0 +1,226 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About ProPlotFits",
+    "section": "",
+    "text": "A Solplots Enterprise\n\n\n\nProPlotFits is part of the Solplots family of data analytics products."
+  },
+  {
+    "objectID": "about.html#the-project",
+    "href": "about.html#the-project",
+    "title": "About ProPlotFits",
+    "section": "The Project",
+    "text": "The Project\nProPlotFits is an open-source NCAA basketball analytics platform that combines machine learning with sports betting intelligence. We’re building tools to help bettors make smarter, data-driven decisions.\nMission: Democratize access to high-quality sports analytics and betting insights.\nApproach: Transparent, reproducible, continuously improving models.\nStatus: Public beta (January 2026)"
+  },
+  {
+    "objectID": "about.html#why-proplotfits",
+    "href": "about.html#why-proplotfits",
+    "title": "About ProPlotFits",
+    "section": "Why “ProPlotFits”?",
+    "text": "Why “ProPlotFits”?\nThe name combines:\n\nPro - Professional-grade analytics\nPlot - Data visualization and statistical modeling\n\nFits - Model fitting and predictions\n\nPlus, it sounds like “profits” 😉"
+  },
+  {
+    "objectID": "about.html#the-team",
+    "href": "about.html#the-team",
+    "title": "About ProPlotFits",
+    "section": "The Team",
+    "text": "The Team\nProPlotFits is built and maintained by sports analytics enthusiasts who believe in:\n\nOpen source development - All code is public on GitHub (coming)\nTransparent methodology - No black boxes\nResponsible betting education - Data-driven, not emotion-driven\nContinuous improvement - Models evolve with feedback"
+  },
+  {
+    "objectID": "about.html#technology-stack",
+    "href": "about.html#technology-stack",
+    "title": "About ProPlotFits",
+    "section": "Technology Stack",
+    "text": "Technology Stack\nData Collection:\n\nhoopR - NCAA basketball data\nThe Odds API - Real-time sportsbook odds\nKenPom.com - Advanced metrics (v2.0)\n\nModeling:\n\nR (data processing, modeling)\ntidyverse, caret, randomForest, gbm\nPython (future deep learning experiments)\n\nWebsite:\n\nQuarto - Publishing system\nGitHub Pages - Free hosting\nFully reproducible builds"
+  },
+  {
+    "objectID": "about.html#development-roadmap",
+    "href": "about.html#development-roadmap",
+    "title": "About ProPlotFits",
+    "section": "Development Roadmap",
+    "text": "Development Roadmap\n\nPhase 1: Beta Launch ✅ (January 2026)\n\nBuild data pipeline\nTrain initial models (GBM, RF, GLM)\nMulti-sportsbook odds integration\nLaunch website with daily picks\nTrack live performance (ongoing)\n\n\n\nPhase 2: Enhancement (February-March 2026)\n\nIntegrate KenPom adjusted metrics\nAdd injury data scraping\nBuild performance dashboard\nTest XGBoost and neural network models\nImplement Spanish translations\n\n\n\nPhase 3: Community Growth (Spring 2026)\n\nUser accounts and tracking\nSocial betting insights\nDiscord community\nAPI for developers\nMobile app"
+  },
+  {
+    "objectID": "about.html#open-source",
+    "href": "about.html#open-source",
+    "title": "About ProPlotFits",
+    "section": "Open Source",
+    "text": "Open Source\nGitHub Repository: Coming Soon\nAll code, models, and data pipelines are open source under MIT License.\nContributions welcome:\n\nModel improvements\nFeature suggestions\n\nBug reports\nDocumentation\nSpanish translations\n\nCheck out our Issues page to get involved!"
+  },
+  {
+    "objectID": "about.html#philosophy",
+    "href": "about.html#philosophy",
+    "title": "About ProPlotFits",
+    "section": "Philosophy",
+    "text": "Philosophy\n\nWhy We’re Different\n1. Transparency Over Hype\nWe show you exactly how our models work, what they’re good at, and where they fail. No “secret sauce” or inflated win rates.\n2. Education Over Gambling\nWe want you to understand sports analytics, not just blindly follow picks. Learn how to think about betting value.\n3. Long-Term Edge Over Short-Term Results\nAny model can get lucky for a few games. We focus on process and edge, not flashy win streaks.\n4. Community Over Competition\nSports betting is not zero-sum between bettors. We’re all fighting the vig, not each other. Let’s share knowledge."
+  },
+  {
+    "objectID": "about.html#disclaimer",
+    "href": "about.html#disclaimer",
+    "title": "About ProPlotFits",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nProPlotFits is a research and educational project.\n\nWe are not a licensed gambling service\nWe do not accept payments for picks\nWe do not guarantee profits\nWe strongly encourage responsible betting\n\nSports betting involves risk. Only bet what you can afford to lose.\nIf you or someone you know has a gambling problem, please seek help:\n\nNational Council on Problem Gambling: 1-800-522-4700\nGamblers Anonymous: gamblersanonymous.org"
+  },
+  {
+    "objectID": "about.html#contact-feedback",
+    "href": "about.html#contact-feedback",
+    "title": "About ProPlotFits",
+    "section": "Contact & Feedback",
+    "text": "Contact & Feedback\nQuestions? Open a GitHub Issue\nFound a bug? Report it on GitHub\nWant to contribute? Check our Contributing Guide\nBusiness inquiries? Email: contact@proplotfits.com"
+  },
+  {
+    "objectID": "about.html#acknowledgments",
+    "href": "about.html#acknowledgments",
+    "title": "About ProPlotFits",
+    "section": "Acknowledgments",
+    "text": "Acknowledgments\nData Sources:\n\nESPN (via hoopR)\nKenPom.com (subscription required)\nThe Odds API\n\nInspiration:\n\nThe sports analytics community on Twitter/X\nFiveThirtyEight’s sports modeling approach\nThe open source R community\n\nSpecial Thanks:\n\nhoopR developers for making college basketball data accessible\nBeta testers providing early feedback\nEveryone who contributes to making sports analytics more transparent\n\n\nLast updated: January 3, 2026"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ProPlotFits",
+    "section": "",
+    "text": "We analyze 350+ Division I teams daily, combining real-time statistics with proven predictive models to identify high-value betting opportunities.\nView Today’s Picks"
+  },
+  {
+    "objectID": "index.html#smart-ncaa-basketball-picks-powered-by-advanced-analytics",
+    "href": "index.html#smart-ncaa-basketball-picks-powered-by-advanced-analytics",
+    "title": "ProPlotFits",
+    "section": "",
+    "text": "We analyze 350+ Division I teams daily, combining real-time statistics with proven predictive models to identify high-value betting opportunities.\nView Today’s Picks"
+  },
+  {
+    "objectID": "index.html#what-we-offer",
+    "href": "index.html#what-we-offer",
+    "title": "ProPlotFits",
+    "section": "🎯 What We Offer",
+    "text": "🎯 What We Offer\n\n\nDaily Predictions\nFresh picks every game day with spread, total, and moneyline predictions for all D-I matchups.\n\n\nValue Detection\nOur models identify where Vegas lines differ from our projections by 3+ points (spreads) or 5+ points (totals).\n\n\nMulti-Sportsbook Coverage\nCompare odds across DraftKings, FanDuel, and BetMGM to find the best lines."
+  },
+  {
+    "objectID": "index.html#our-edge",
+    "href": "index.html#our-edge",
+    "title": "ProPlotFits",
+    "section": "📊 Our Edge",
+    "text": "📊 Our Edge\nProPlotFits combines:\n\nRolling performance metrics (L3, L5 games)\nFour Factors analysis (eFG%, TOV%, ORB%, FT Rate)\nPace-adjusted efficiency ratings\nKenPom adjusted metrics (coming soon in v2.0)\nMachine learning models trained on 2+ seasons of data\n\nOur Gradient Boosting (spreads), Random Forest (totals), and Logistic Regression (win probability) models are backtested and validated against historical performance."
+  },
+  {
+    "objectID": "index.html#beta-launch-notice",
+    "href": "index.html#beta-launch-notice",
+    "title": "ProPlotFits",
+    "section": "⚠️ Beta Launch Notice",
+    "text": "⚠️ Beta Launch Notice\nProPlotFits is currently in beta testing (January 2026).\n\nModels are being refined daily\nHistorical performance tracking begins this month\nUser feedback is actively shaping our roadmap\nFree access during beta period\n\nThis is not financial advice. Sports betting involves risk. Please bet respons"
+  },
+  {
+    "objectID": "methodology.html",
+    "href": "methodology.html",
+    "title": "Methodology",
+    "section": "",
+    "text": "ProPlotFits uses machine learning models trained on 2+ seasons of NCAA Division I men’s basketball data to predict game outcomes and identify betting value.\nOur predictions are generated fresh daily by combining:\n\nRolling performance metrics from recent games\nAdvanced basketball analytics (Four Factors, pace-adjusted efficiency)\nStatistical modeling (Gradient Boosting, Random Forest, Logistic Regression)\nVegas odds comparison from multiple sportsbooks"
+  },
+  {
+    "objectID": "methodology.html#overview",
+    "href": "methodology.html#overview",
+    "title": "Methodology",
+    "section": "",
+    "text": "ProPlotFits uses machine learning models trained on 2+ seasons of NCAA Division I men’s basketball data to predict game outcomes and identify betting value.\nOur predictions are generated fresh daily by combining:\n\nRolling performance metrics from recent games\nAdvanced basketball analytics (Four Factors, pace-adjusted efficiency)\nStatistical modeling (Gradient Boosting, Random Forest, Logistic Regression)\nVegas odds comparison from multiple sportsbooks"
+  },
+  {
+    "objectID": "methodology.html#data-pipeline",
+    "href": "methodology.html#data-pipeline",
+    "title": "Methodology",
+    "section": "Data Pipeline",
+    "text": "Data Pipeline\n\n1. Data Collection\nGame Statistics (via hoopR)\n\nBox scores for all 350+ D-I teams\nUpdated within 1 hour of game completion\nCovers 2023-24, 2024-25, and current 2025-26 seasons\n\nVegas Odds (via The Odds API)\n\nReal-time spreads, totals, and moneylines\nDraftKings, FanDuel, BetMGM coverage\nUpdated every 6 hours on game days\n\nKenPom Metrics (coming in v2.0)\n\nAdjusted offensive/defensive efficiency\nStrength of schedule\nTempo ratings\n\n\n\n2. Feature Engineering\nFor each game, we calculate:\nRecent Performance (Rolling Windows)\n\nLast 3 games (L3): Points, margins, win %\nLast 5 games (L5): Full four factors, efficiency metrics\n\nFour Factors Analysis\n\nEffective Field Goal % (eFG%)\nTurnover Rate (TOV%)\nOffensive Rebound % (ORB%)\nFree Throw Rate (FTR)\n\nEfficiency Metrics\n\nOffensive Efficiency (points per 100 possessions)\nDefensive Efficiency (opponent points per 100 possessions)\nNet Efficiency (Offensive - Defensive)\nPace (possessions per game)\n\nMatchup Features\n\nOffensive vs Defensive matchup ratings\nPace differentials\nHome court advantage adjustment (+3.5 points)\nConference game indicator"
+  },
+  {
+    "objectID": "methodology.html#prediction-models",
+    "href": "methodology.html#prediction-models",
+    "title": "Methodology",
+    "section": "Prediction Models",
+    "text": "Prediction Models\n\nModel 1: Spread Prediction (Gradient Boosting)\nTarget: Home team margin of victory\nAlgorithm: Gradient Boosted Trees (GBM)\nKey Features:\n\nNet efficiency differential (most important)\nOffensive/defensive matchup ratings\nRecent form (L3 margins)\nHome court advantage\nFour factors differentials\n\nPerformance Metrics:\n\nRMSE: ~11.2 points (backtest)\nMAE: ~8.7 points\nR²: 0.31\n\nWhat This Means:\nOn average, our spread predictions are within ~9 points of actual margins. While that sounds wide, the key is identifying games where we differ from Vegas by 3+ points.\n\n\nModel 2: Total Prediction (Random Forest)\nTarget: Combined score (both teams)\nAlgorithm: Random Forest Regression\nKey Features:\n\nCombined offensive efficiency (both teams)\nAverage pace (most important)\nPace differential\nRecent scoring trends\nConference game indicator\n\nPerformance Metrics:\n\nRMSE: ~13.8 points (backtest)\nMAE: ~10.9 points\nR²: 0.24\n\nWhat This Means:\nTotal predictions are harder than spreads (more variance), but we focus on games with 5+ point edges where we see clear over/under value.\n\n\nModel 3: Win Probability (Logistic Regression)\nTarget: Home team win (binary)\nAlgorithm: Logistic Regression\nKey Features:\n\nPredicted margin (from Model 1)\nWin percentage differential\nRecent form trends\nHome court advantage\n\nPerformance Metrics:\n\nAccuracy: 72% (backtest)\nAUC-ROC: 0.78\nLog Loss: 0.54\n\nWhat This Means:\nOur win probability model correctly predicts winners 72% of the time on historical data. High-confidence picks (&gt;75% win prob) are our strongest plays."
+  },
+  {
+    "objectID": "methodology.html#value-detection",
+    "href": "methodology.html#value-detection",
+    "title": "Methodology",
+    "section": "Value Detection",
+    "text": "Value Detection\n\nWhat is “Edge”?\nEdge = | Our Prediction - Vegas Line |\nSpread Edge: Difference in predicted margin\n\nExample: We predict Duke -12, Vegas has Duke -8 → 4 point edge\nWe look for edges of 3+ points\n\nTotal Edge: Difference in predicted total points\n\nExample: We predict 145 total, Vegas has O/U 155 → 10 point edge\nWe look for edges of 5+ points\n\n\n\nWhy These Thresholds?\nBased on backtesting:\n\n3-point spread edges hit at 55-58% (profitable with -110 odds)\n5-point total edges hit at 53-56% (profitable with -110 odds)\nHigher edges = higher win rates, but fewer opportunities\n\n\n\nMulti-Sportsbook Averaging\nWe average odds across DraftKings, FanDuel, and BetMGM to:\n\nGet a consensus market view\nReduce impact of outlier lines\nEnsure picks are available at multiple books\n\nYou should always shop for the best line at bet time."
+  },
+  {
+    "objectID": "methodology.html#model-training-validation",
+    "href": "methodology.html#model-training-validation",
+    "title": "Methodology",
+    "section": "Model Training & Validation",
+    "text": "Model Training & Validation\n\nTraining Data\n\n2023-24 season: 5,000+ games\n2024-25 season: 5,000+ games\n\nCurrent season: Ongoing (retraining weekly)\n\n\n\nValidation Approach\n\nTime-series split: Train on past, test on future\nNo data leakage: Only use information available pre-game\nRolling retraining: Models updated weekly with new games\n\n\n\nWhat We’re NOT Doing\n❌ Overfitting to past results ❌ Using future information in predictions\n❌ Cherry-picking successful picks for marketing ❌ Guaranteeing profits"
+  },
+  {
+    "objectID": "methodology.html#limitations-transparency",
+    "href": "methodology.html#limitations-transparency",
+    "title": "Methodology",
+    "section": "Limitations & Transparency",
+    "text": "Limitations & Transparency\n\nModel Weaknesses\n\nInjuries not accounted for - We use team stats, not player-level data\nCoaching changes - Not explicitly modeled\nMotivation factors - Can’t quantify “must-win” games\nSmall sample sizes early - Teams with &lt;5 games have less reliable stats\nNon-conference randomness - Lower-quality matchups harder to predict\n\n\n\nWhy We Share This\nWe believe in transparent, data-driven betting analysis. No model is perfect, and we won’t pretend ours is. Our edge comes from:\n\nSystematic, repeatable process\nLarge sample size predictions\nFocus on high-edge opportunities\nContinuous model improvement"
+  },
+  {
+    "objectID": "methodology.html#version-history",
+    "href": "methodology.html#version-history",
+    "title": "Methodology",
+    "section": "Version History",
+    "text": "Version History\n\nv1.0 (January 2026) - Current\n\nGradient Boosting (spreads)\nRandom Forest (totals)\nLogistic Regression (win probability)\nhoopR data pipeline\nMulti-sportsbook odds integration\n\n\n\nv2.0 (Planned - February 2026)\n\nKenPom adjusted efficiency integration\nXGBoost model testing\nInjury data scraping\nHistorical performance tracking dashboard"
+  },
+  {
+    "objectID": "methodology.html#questions",
+    "href": "methodology.html#questions",
+    "title": "Methodology",
+    "section": "Questions?",
+    "text": "Questions?\nWant to learn more? Check out:\n\nGitHub Repository - All code is open source\nAbout Page - Meet the team\nToday’s Picks - See the models in action\n\nFound an issue? Open a GitHub issue - we’re actively improving!"
+  },
+  {
+    "objectID": "picks-en.html",
+    "href": "picks-en.html",
+    "title": "Today’s Picks",
+    "section": "",
+    "text": "Beta Disclaimer\n\n\n\nThese predictions are generated by machine learning models currently in beta testing. Past performance does not guarantee future results. Please bet responsibly."
+  },
+  {
+    "objectID": "picks-en.html#top-10-spread-value-bets",
+    "href": "picks-en.html#top-10-spread-value-bets",
+    "title": "Today’s Picks",
+    "section": "🎯 Top 10 Spread Value Bets",
+    "text": "🎯 Top 10 Spread Value Bets\nOur model identifies games where our predicted margin differs significantly from Vegas spreads.\nEdge Threshold: 3+ points\n\n\n\n\n\n\n  \n    \n      Spread Value Bets\n    \n    \n      Top 10 of 10 total opportunities\n    \n    \n      Matchup\n      Our Prediction\n      Vegas Spread\n      Edge\n      Win Prob %\n      Recommended Bet\n    \n  \n  \n    Siena Saints @ Rider Broncs\n-12.1\n8.5\n20.6\n17.2\nSiena Saints +8.5\n    Fairfield Stags @ Niagara Purple Eagles\n-8.6\n3.5\n12.1\n25.2\nFairfield Stags +3.5\n    Northern Iowa Panthers @ Evansville Purple Aces\n-7.0\n4.5\n11.5\n26.8\nNorthern Iowa Panthers +4.5\n    Sacred Heart Pioneers @ Canisius Golden Griffins\n-1.0\n9.2\n10.2\n51.1\nSacred Heart Pioneers +9.16666666666667\n    Creighton Bluejays @ Seton Hall Pirates\n10.9\n2.2\n8.7\n79.1\nSeton Hall Pirates 2.16666666666667\n    Louisiana Tech Bulldogs @ Western Kentucky Hilltoppers\n1.5\n9.5\n8.0\n61.1\nLouisiana Tech Bulldogs +9.5\n    Robert Morris Colonials @ Oakland Golden Grizzlies\n-3.1\n4.0\n7.1\n41.4\nRobert Morris Colonials +4\n    UAB Blazers @ South Florida Bulls\n0.8\n7.5\n6.7\n52.7\nUAB Blazers +7.5\n    Southern Illinois Salukis @ Belmont Bruins\n13.2\n6.5\n6.7\n89.5\nBelmont Bruins 6.5\n    Tulsa Golden Hurricane @ North Texas Mean Green\n-2.7\n3.5\n6.2\n42.1\nTulsa Golden Hurricane +3.5\n  \n  \n\n\n\n\n\nHow to Read This Table\n\nOur Prediction: Home team margin (positive = home win, negative = away win)\nVegas Spread: Current average across DraftKings, FanDuel, BetMGM\nEdge: Absolute difference between our prediction and Vegas (higher = more value)\nWin Prob %: Our model’s confidence in home team victory\nRecommended Bet: Which side and line to take"
+  },
+  {
+    "objectID": "picks-en.html#top-10-total-value-bets",
+    "href": "picks-en.html#top-10-total-value-bets",
+    "title": "Today’s Picks",
+    "section": "📊 Top 10 Total Value Bets",
+    "text": "📊 Top 10 Total Value Bets\nGames where our predicted total points differ significantly from Vegas totals.\nEdge Threshold: 5+ points\n\n\n\n\n\n\n  \n    \n      Total Value Bets\n    \n    \n      Top 10 of 11 total opportunities\n    \n    \n      Matchup\n      Our Total\n      Vegas Total\n      Edge\n      Direction\n      Recommended Bet\n    \n  \n  \n    Tulsa Golden Hurricane @ North Texas Mean Green\n154.8\n137.5\n17.3\nOVER\nOVER 137.5\n    Manhattan Jaspers @ Merrimack Warriors\n132.3\n146.2\n13.9\nUNDER\nUNDER 146.166666666667\n    Florida Atlantic Owls @ Tulane Green Wave\n147.3\n158.5\n11.2\nUNDER\nUNDER 158.5\n    Robert Morris Colonials @ Oakland Golden Grizzlies\n151.0\n161.8\n10.8\nUNDER\nUNDER 161.833333333333\n    Fairfield Stags @ Niagara Purple Eagles\n147.7\n137.5\n10.2\nOVER\nOVER 137.5\n    Sacred Heart Pioneers @ Canisius Golden Griffins\n132.7\n141.2\n8.4\nUNDER\nUNDER 141.166666666667\n    UIC Flames @ Valparaiso Beacons\n152.3\n144.2\n8.2\nOVER\nOVER 144.166666666667\n    UAB Blazers @ South Florida Bulls\n155.6\n163.5\n7.9\nUNDER\nUNDER 163.5\n    Stonehill Skyhawks @ Wagner Seahawks\n146.5\n139.2\n7.3\nOVER\nOVER 139.166666666667\n    Northern Iowa Panthers @ Evansville Purple Aces\n136.4\n129.5\n6.9\nOVER\nOVER 129.5\n  \n  \n\n\n\n\n\nHow to Read This Table\n\nOur Total: Predicted combined score for both teams\nVegas Total: Current average O/U line\nEdge: Difference in predicted points (higher = more value)\nDirection: Whether to bet OVER or UNDER\nRecommended Bet: Specific line to target"
+  },
+  {
+    "objectID": "picks-en.html#top-10-high-confidence-plays",
+    "href": "picks-en.html#top-10-high-confidence-plays",
+    "title": "Today’s Picks",
+    "section": "🏆 Top 10 High-Confidence Plays",
+    "text": "🏆 Top 10 High-Confidence Plays\nGames where our model has the highest win probability predictions.\nConfidence Threshold: Based on win probability model\n\n\n\n\n\n\n  \n    \n      High Confidence Plays\n    \n    \n      Model's strongest win probability predictions\n    \n    \n      Matchup\n      Favorite\n      Win Prob %\n      Our Spread\n      Vegas Spread\n      Edge\n    \n  \n  \n    Marquette Golden Eagles @ UConn Huskies\nUConn Huskies\n93.7\n17.0\n18.5\n1.5\n    Southern Illinois Salukis @ Belmont Bruins\nBelmont Bruins\n89.5\n13.2\n6.5\n6.7\n    Siena Saints @ Rider Broncs\nSiena Saints\n82.8\n-12.1\n8.5\n20.6\n    Creighton Bluejays @ Seton Hall Pirates\nSeton Hall Pirates\n79.1\n10.9\n2.2\n8.7\n    Manhattan Jaspers @ Merrimack Warriors\nMerrimack Warriors\n77.8\n5.1\n7.5\n2.4\n    Stonehill Skyhawks @ Wagner Seahawks\nWagner Seahawks\n77.3\n8.9\n8.5\n0.4\n    Fairfield Stags @ Niagara Purple Eagles\nFairfield Stags\n74.8\n-8.6\n3.5\n12.1\n    Iona Gaels @ Marist Red Foxes\nMarist Red Foxes\n73.4\n5.0\n3.8\n1.2\n    Northern Iowa Panthers @ Evansville Purple Aces\nNorthern Iowa Panthers\n73.2\n-7.0\n4.5\n11.5\n    Florida Atlantic Owls @ Tulane Green Wave\nTulane Green Wave\n71.4\n4.1\n4.2\n0.1\n  \n  \n\n\n\n\n\nHow to Read This Table\n\nFavorite: Team our model projects to win\nWin Prob %: Model confidence (50% = toss-up, 100% = certain)\nOur Spread: Predicted margin of victory\nVegas Spread: Market’s predicted margin\nEdge: Additional value if spread edges align"
+  },
+  {
+    "objectID": "picks-en.html#download-full-report",
+    "href": "picks-en.html#download-full-report",
+    "title": "Today’s Picks",
+    "section": "📥 Download Full Report",
+    "text": "📥 Download Full Report\nWant all today’s predictions?\nDownload Complete Predictions (CSV)\nIncludes:\n\nAll 48 games scheduled for January 4, 2026\nPredicted spreads, totals, and win probabilities\nVegas odds from 3 sportsbooks (DraftKings, FanDuel, BetMGM)\nCalculated edges and value indicators\nTeam statistics and rolling metrics"
+  },
+  {
+    "objectID": "picks-en.html#model-performance",
+    "href": "picks-en.html#model-performance",
+    "title": "Today’s Picks",
+    "section": "📈 Model Performance",
+    "text": "📈 Model Performance\n\n\n\n\n\n\nBeta Testing Phase\n\n\n\nWe’re tracking model performance starting January 2026. Historical backtesting shows promise, but live results will be reported transparently as they come in.\nCheck back weekly for updated performance metrics."
+  },
+  {
+    "objectID": "picks-en.html#responsible-betting",
+    "href": "picks-en.html#responsible-betting",
+    "title": "Today’s Picks",
+    "section": "⚠️ Responsible Betting",
+    "text": "⚠️ Responsible Betting\n\nSet a budget and stick to it\nNever chase losses\nBet for entertainment, not income\nUse multiple sportsbooks to find best lines\nConsider unit sizing based on edge/confidence\n\nResources:\n\nNational Council on Problem Gambling\nGamblers Anonymous\n\n\nPredictions updated: 2026-01-04 12:33:41.895516 EST\nNext update: Daily at 9:00 AM EST"
+  }
+]

@@ -5,7 +5,8 @@
     "Source": "Source",
     "docOutlineVisible": "1",
     "rmdVisualCollapsedChunks": "",
-    "cursorPosition": "231,37",
-    "scrollLine": "227",
-    "rmdVisualModeLocation": "6952:7866.39990234375"
+    "cursorPosition": "38,1",
+    "scrollLine": "26",
+    "rmdVisualModeLocation": "6952:7866.39990234375",
+    "disableDependencyDiscovery": "1"
 }

@@ -34,7 +34,7 @@ format_picks_table <- function(data) {
     ) %>%
     cols_align(
       align = "left",
-      columns = c(home_team_name, away_team_name)
+      columns = c(Matchup)  # Changed from home_team_name, away_team_name
     )
 }
 ```

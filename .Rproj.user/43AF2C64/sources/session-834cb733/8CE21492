@@ -3,7 +3,7 @@
     "path": "~/proplotfits/picks-en.qmd",
     "project_path": "picks-en.qmd",
     "type": "quarto_markdown",
-    "hash": "4215467460",
+    "hash": "2759644122",
     "contents": "",
     "dirty": false,
     "created": 1767467826550.0,
@@ -16,16 +16,17 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "cursorPosition": "231,37",
-        "scrollLine": "227",
-        "rmdVisualModeLocation": "6952:7866.39990234375"
+        "cursorPosition": "38,1",
+        "scrollLine": "26",
+        "rmdVisualModeLocation": "6952:7866.39990234375",
+        "disableDependencyDiscovery": "1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1767546971,
+    "lastKnownWriteTime": 1767548014,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1767546971488,
+    "last_content_update": 1767548014355,
     "read_only": false,
     "read_only_alternatives": []
 }
