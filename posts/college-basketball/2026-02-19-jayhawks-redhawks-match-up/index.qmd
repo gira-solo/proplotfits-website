@@ -1,0 +1,290 @@
+---
+title: "A Tale of Two Hawks Part 2"
+description: "A reproducible analysis of college basketball data with R"
+date: last-modified
+categories: [college-basketball, tutorial, kansas, miami-oh]
+author: "ProPlotFits"
+---
+
+## Introduction
+
+For context, please see Part 1 here.
+
+## What We're Looking For
+
+If the goal is to use data to bet responsible AND share our results in reproducible manner, we need to isolate the data that helps us develop a model that predicts winners in potential match-ups.
+
+Dean Oliver narrowed the most important analytics of college basketball down to Four Factors:
+
+1.  **Shooting Efficiency** - More baskets and fewer misses
+2.  **Turnovers** - Number of times losing a possession
+3.  **Rebounds** - Number of times gaining a possession
+4.  **Free Throws** - Free points
+
+Additionally, there are **efficiency ratings** - points scored and allowed per 100 possessions - which help adjust for pace.
+
+When we talk about using machine learning to help us predict the outcome of match-ups, what we are actually doing is identifying features of a phenomena that could potentially assist us in determining outcomes. That is incredibly boiled down, but when we develop these predictive models, the models themselves let the analysts know what features are driving most of the explanation.
+
+------------------------------------------------------------------------
+
+## How You Can Use This
+
+We are going to take a look at a hypothetical match-up between the Kansas Jayhawks and the Miami RedHawks. There is a *slight* chance they could in fact end up playing each other in the tournament IF they are in the same region. There is likely *no* chance they both make it to the Final Four.
+
+This exact workflow works for any team in Division I basketball.
+
+**The steps:**
+
+1.  Load schedule and box scores with `hoopR`
+2.  Calculate four factors using the formulas above
+3.  Calculate efficiency ratings
+4.  Visualize trends with `ggplot2`
+5.  Compare head-to-head results
+
+------------------------------------------------------------------------
+
+## Step 1: Retrieve official ESPN data
+
+Loading data using the help of an R package named `hoopR`. You can learn more about its [documentation](https://hoopr.sportsdataverse.org/), but it's basically an API call to EPSN for live college basketball data.
+
+I am using other libraries of course, but we don't have time to talk about them!
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(hoopR)
+library(janitor)
+
+schedule <- 
+  load_mbb_schedule(seasons = 2026) |>
+  clean_names()
+
+box_scores <- 
+  load_mbb_team_box(seasons = 2026) |>
+  clean_names()
+
+# Filter to just Kansas & Miami
+hawks <- 
+  box_scores |>
+  filter(team_display_name %in% c("Kansas Jayhawks", "Miami (OH) RedHawks"))
+
+# Quick look at what we have
+str(hawks[1:2,])
+
+```
+
+I've taken the first two rows of our `hawks` data frame, which was filtered from the 2026 box score data stored in `box_scores` and told R to give me its structure. We have 59 columns; R lists them in order of appearance in the matrix, defines the type of data we are dealing with, shows us how many observations and then gives us a preview of said observations.
+
+We can see that these are the most recent games for both teams.
+
+------------------------------------------------------------------------
+
+## Step 2: Calculate the Four Factors
+
+Now let's calculate Oliver's Four Factors for both teams.
+
+```{r}
+four_factors <- 
+  hawks |>
+  mutate(
+    # Effective Field Goal % (weights three-pointers appropriately)
+    efg_pct = (field_goals_made + 0.5 * three_point_field_goals_made) / 
+              field_goals_attempted,
+    
+    # Turnover % (turnovers per 100 possessions)
+    tov_pct = turnovers / 
+              (field_goals_attempted + 0.44 * free_throws_attempted + turnovers),
+    
+    # Offensive Rebound % (offensive rebounds captured)
+    orb_pct = offensive_rebounds / 
+              (offensive_rebounds + defensive_rebounds),
+    
+    # Free Throw Rate (free throw attempts per field goal attempt)
+    ft_rate = free_throws_made / field_goals_attempted
+  ) |>
+  select(team_display_name, game_date, team_score, opponent_team_score,
+         efg_pct, tov_pct, orb_pct, ft_rate)
+
+# Show the first few games
+head(four_factors, 10) |> knitr::kable()
+```
+
+------------------------------------------------------------------------
+
+## Step 3: Compare Season Averages
+
+Let's see which team has the edge in each factor.
+
+```{r}
+season_averages <- 
+  four_factors |>
+  group_by(team_display_name) |>
+  summarise(
+    games = n(),
+    avg_efg = mean(efg_pct, na.rm = TRUE),
+    avg_tov = mean(tov_pct, na.rm = TRUE),
+    avg_orb = mean(orb_pct, na.rm = TRUE),
+    avg_ftr = mean(ft_rate, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+library(kableExtra)
+
+season_averages |>
+  knitr::kable(
+    digits = 3,
+    col.names = c("Team", "Games", "eFG%", "TOV%", "ORB%", "FTR"),
+    caption = "Season Averages: Four Factors",
+    format = "html",
+    escape = FALSE
+  ) |>
+  kable_styling(bootstrap_options = c("striped", "hover")) |>
+  # Highlight max eFG% (higher is better)
+  column_spec(3, 
+              background = ifelse(season_averages$avg_efg == max(season_averages$avg_efg),
+                                  "#d4edda", "white")) |>
+  # Highlight min TOV% (lower is better)  
+  column_spec(4,
+              background = ifelse(season_averages$avg_tov == min(season_averages$avg_tov),
+                                  "#d4edda", "white")) |>
+  # Highlight max ORB% (higher is better)
+  column_spec(5,
+              background = ifelse(season_averages$avg_orb == max(season_averages$avg_orb),
+                                  "#d4edda", "white")) |>
+  # Highlight max FTR (higher is better)
+  column_spec(6,
+              background = ifelse(season_averages$avg_ftr == max(season_averages$avg_ftr),
+                                  "#d4edda", "white"))
+```
+
+---
+
+Would you look at that. Miami's offense outperforms Kansas...if you completely ignore the quality of opponents Miami has played vs Kansas. The Big 12 has Houston, Arizona, Iowa State, Texas Tech and BYU in the AP Top 25 along with Kansas. Miami's best win as a 3-point home win over Akron.
+
+## Step 4: Visualize Shooting Efficiency
+
+Let's look at how consistent each team is at making shots.
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+
+four_factors |>
+  ggplot(aes(x = team_display_name, y = efg_pct, fill = team_display_name)) +
+  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+  scale_fill_manual(
+    values = c("Kansas Jayhawks" = "#003262", 
+               "Miami (OH) RedHawks" = "#8C1515")
+  ) +
+  labs(
+    title = "Shooting Efficiency: Kansas vs Miami",
+    subtitle = "Effective Field Goal Percentage Distribution",
+    x = NULL,
+    y = "eFG%",
+    caption = "Data: hoopR / ESPN | Higher = Better"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    panel.grid.major.x = element_blank()
+  ) +
+  coord_flip()
+```
+
+It's very likely Kansas is playing teams with much, much better defenses.
+
+## Step 5: Calculate Efficiency Ratings
+
+Points per game is misleading because it depends on pace. A team that plays fast will score more points, but that doesn't mean they're better.
+
+Efficiency ratings adjust for pace by measuring points per 100 possessions.
+
+```{r}
+efficiency <- hawks %>%
+  mutate(
+    # Estimate possessions using the standard formula
+    possessions = field_goals_attempted - 
+                  offensive_rebounds + 
+                  turnovers + 
+                  0.44 * free_throws_attempted,
+    
+    # Offensive Rating (points scored per 100 possessions)
+    ortg = (team_score / possessions) * 100,
+    
+    # Defensive Rating (points allowed per 100 possessions)
+    drtg = (opponent_team_score / possessions) * 100,
+    
+    # Net Rating (offense minus defense)
+    net_rating = ortg - drtg
+  ) %>%
+  select(team_display_name, game_date, possessions, ortg, drtg, net_rating)
+
+# Season averages
+efficiency_summary <- efficiency %>%
+  group_by(team_display_name) %>%
+  summarise(
+    avg_pace = mean(possessions, na.rm = TRUE),
+    avg_ortg = mean(ortg, na.rm = TRUE),
+    avg_drtg = mean(drtg, na.rm = TRUE),
+    avg_net = mean(net_rating, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+efficiency_summary %>%
+  knitr::kable(
+    digits = 1,
+    col.names = c("Team", "Pace", "ORtg", "DRtg", "Net Rating"),
+    caption = "Efficiency Ratings (per 100 possessions)"
+  )
+```
+
+**Offensive Rating (ORtg):** Points per 100 possessions
+
+**Defensive Rating (DRtg):** Points allowed per 100 possessions
+
+**Net Rating:** Offensive Rating minus Defensive Rating
+
+## Step 6: Recent Form (Last 10 Games)
+
+Let's see who's trending up and who's trending down.
+
+```{r}
+#| fig-width: 9
+#| fig-height: 6
+
+efficiency %>%
+  group_by(team_display_name) %>%
+  arrange(game_date) %>%
+  mutate(game_num = row_number()) %>%
+  filter(game_num > max(game_num) - 10) %>%
+  ggplot(aes(x = game_num, y = net_rating, color = team_display_name)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", linewidth = 0.8) +
+  scale_color_manual(
+    values = c("Kansas Jayhawks" = "#003262", 
+               "Miami (OH) RedHawks" = "#8C1515")
+  ) +
+  labs(
+    title = "Net Rating Trend: Last 10 Games",
+    subtitle = "Positive = good, upward trend = improving",
+    x = "Game Number (Most Recent 10)",
+    y = "Net Rating",
+    color = "Team",
+    caption = "Data: hoopR / ESPN"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    legend.position = "bottom"
+  )
+```
+
+Miami appears to be in a more stable position than Kansas. As a unit, Miami definitely seems more consistent.
+
+## Conclusion
+
+This workflow can be reproduced for any of the 360+ Division-1 Mens' Basketball Teams. In Part 3 of this series, we'll walk through how to build machine learning models to incorporate all of this data and predict who would win in a potential match-up between Kansas and Miami, the margin of victory and the total points scored.
+
+*Want to see more analyses like this? Subscribe to our Telegram for daily picks and breakdowns.*

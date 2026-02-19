@@ -9,8 +9,8 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Today's Picks"
-        href: picks-en.qmd
+      - text: "Metrics & Analytics"
+        href: posts.qmd
       - text: "Methodology"
         href: methodology.qmd
       - text: "About"
@@ -20,19 +20,18 @@ website:
         href: https://github.com/yourusername/proplotfits
         
   page-footer:
-    left: "© 2026 ProPlotFits - Beta"
+    left: "© 2026 ProPlotFits"
     right: 
       - text: "Methodology"
         href: methodology.qmd
 
 format:
   html:
-    theme: 
-      light: [cosmo, custom.scss]
+    theme: cosmo
     css: styles.css
     toc: true
     toc-depth: 3
-    code-fold: false
+    code-fold: true
     code-tools: false
     
 execute:

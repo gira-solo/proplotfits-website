@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="ProPlotFits">
+<meta name="dcterms.date" content="2026-02-19">
+<meta name="description" content="How to train, validate and deploy predictive models">
+
+<title>ProPlotFits - A Tale of Two Hawks Part 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">ProPlotFits</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../posts.html" rel="" target="">
+ <span class="menu-text">Metrics &amp; Analytics</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../methodology.html" rel="" target="">
+ <span class="menu-text">Methodology</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/yourusername/proplotfits" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-three-prediction-tasks" id="toc-the-three-prediction-tasks" class="nav-link" data-scroll-target="#the-three-prediction-tasks">The Three Prediction Tasks</a></li>
+  <li><a href="#step-1-prepare-historical-data" id="toc-step-1-prepare-historical-data" class="nav-link" data-scroll-target="#step-1-prepare-historical-data">Step 1: Prepare Historical Data</a></li>
+  <li><a href="#step-2-feature-engineering" id="toc-step-2-feature-engineering" class="nav-link" data-scroll-target="#step-2-feature-engineering">Step 2: Feature Engineering</a></li>
+  <li><a href="#step-3-adjust-data-granularity" id="toc-step-3-adjust-data-granularity" class="nav-link" data-scroll-target="#step-3-adjust-data-granularity">Step 3: Adjust Data Granularity</a></li>
+  <li><a href="#step-4-train-test-split" id="toc-step-4-train-test-split" class="nav-link" data-scroll-target="#step-4-train-test-split">Step 4: Train-Test Split</a></li>
+  <li><a href="#model-1-binary-outcome-prediction" id="toc-model-1-binary-outcome-prediction" class="nav-link" data-scroll-target="#model-1-binary-outcome-prediction">Model 1: Binary Outcome Prediction</a></li>
+  <li><a href="#model-2-score-differential-prediction" id="toc-model-2-score-differential-prediction" class="nav-link" data-scroll-target="#model-2-score-differential-prediction">Model 2: Score Differential Prediction</a></li>
+  <li><a href="#model-3-combined-score-prediction" id="toc-model-3-combined-score-prediction" class="nav-link" data-scroll-target="#model-3-combined-score-prediction">Model 3: Combined Score Prediction</a></li>
+  <li><a href="#step-5-apply-models-to-kansas-vs.-miami" id="toc-step-5-apply-models-to-kansas-vs.-miami" class="nav-link" data-scroll-target="#step-5-apply-models-to-kansas-vs.-miami">Step 5: Apply Models to Kansas vs.&nbsp;Miami</a></li>
+  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results">Interpreting the Results</a></li>
+  <li><a href="#what-makes-these-models-useful" id="toc-what-makes-these-models-useful" class="nav-link" data-scroll-target="#what-makes-these-models-useful">What Makes These Models Useful</a></li>
+  <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance">Feature Importance</a></li>
+  <li><a href="#limitations-and-honest-assessment" id="toc-limitations-and-honest-assessment" class="nav-link" data-scroll-target="#limitations-and-honest-assessment">Limitations and Honest Assessment</a></li>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Tale of Two Hawks Part 3</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">college-basketball</div>
+    <div class="quarto-category">machine-learning</div>
+    <div class="quarto-category">tutorial</div>
+    <div class="quarto-category">kansas</div>
+    <div class="quarto-category">miami-oh</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    How to train, validate and deploy predictive models
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>ProPlotFits </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 19, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Why am I trying to see who would win in a college basketball team between Kansas of the Big 12 and Miami of the MAC? These teams haven’t played each other since 2011. All of those answers can be answered in Part 1 and Part 2.</p>
+<p>Here, the goal is to find out what would happen if Kansas and Miami were to play each other.</p>
+<hr>
+</section>
+<section id="the-three-prediction-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-prediction-tasks">The Three Prediction Tasks</h2>
+<p>We have three outcomes that require three models:</p>
+<p><strong>Model 1: Binary Classification</strong> - Will one specific team win?<br>
+<strong>Model 2: Continuous Regression (Difference)</strong> - By how much might the score differ between teams?<br>
+<strong>Model 3: Continuous Regression (Sum)</strong> - What might the combined scoring output look like?</p>
+<p>Each model uses the same underlying features but optimizes for different objectives. Together they give us a complete picture of what might happen.</p>
+<hr>
+</section>
+<section id="step-1-prepare-historical-data" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-prepare-historical-data">Step 1: Prepare Historical Data</h2>
+<p>We need clean, structured data where each row represents one game from the perspective of both teams.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hoopR)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load historical data (2024 and 2025 seasons)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>box_scores_2024 <span class="ot">&lt;-</span> <span class="fu">load_mbb_team_box</span>(<span class="at">seasons =</span> <span class="dv">2024</span>) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>box_scores_2025 <span class="ot">&lt;-</span> <span class="fu">load_mbb_team_box</span>(<span class="at">seasons =</span> <span class="dv">2025</span>) <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine seasons</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>all_games <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  box_scores_2024 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2024</span>),</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  box_scores_2025 <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2025</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(all_games)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 25,052
+Columns: 57
+$ game_id                           &lt;int&gt; 401638645, 401638645, 401638644, 401…
+$ season                            &lt;dbl&gt; 2024, 2024, 2024, 2024, 2024, 2024, …
+$ season_type                       &lt;int&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
+$ game_date                         &lt;date&gt; 2024-04-08, 2024-04-08, 2024-04-06,…
+$ game_date_time                    &lt;dttm&gt; 2024-04-08 21:20:00, 2024-04-08 21:…
+$ team_id                           &lt;int&gt; 2509, 41, 333, 41, 152, 2509, 282, 2…
+$ team_uid                          &lt;chr&gt; "s:40~l:41~t:2509", "s:40~l:41~t:41"…
+$ team_slug                         &lt;chr&gt; "purdue-boilermakers", "uconn-huskie…
+$ team_location                     &lt;chr&gt; "Purdue", "UConn", "Alabama", "UConn…
+$ team_name                         &lt;chr&gt; "Boilermakers", "Huskies", "Crimson …
+$ team_abbreviation                 &lt;chr&gt; "PUR", "CONN", "ALA", "CONN", "NCSU"…
+$ team_display_name                 &lt;chr&gt; "Purdue Boilermakers", "UConn Huskie…
+$ team_short_display_name           &lt;chr&gt; "Purdue", "UConn", "Alabama", "UConn…
+$ team_color                        &lt;chr&gt; "000000", "0c2340", "9e1632", "0c234…
+$ team_alternate_color              &lt;chr&gt; "cfb991", "f1f2f3", "ffffff", "f1f2f…
+$ team_logo                         &lt;chr&gt; "https://a.espncdn.com/i/teamlogos/n…
+$ team_home_away                    &lt;chr&gt; "away", "home", "away", "home", "awa…
+$ team_score                        &lt;int&gt; 60, 75, 72, 86, 50, 63, 77, 79, 67, …
+$ team_winner                       &lt;lgl&gt; FALSE, TRUE, FALSE, TRUE, FALSE, TRU…
+$ assists                           &lt;int&gt; 8, 18, 9, 20, 10, 13, 22, 12, 11, 18…
+$ blocks                            &lt;int&gt; 3, 4, 5, 8, 3, 2, 1, 6, 8, 6, 0, 4, …
+$ defensive_rebounds                &lt;int&gt; 19, 21, 21, 25, 22, 30, 29, 24, 24, …
+$ fast_break_points                 &lt;chr&gt; "0", "2", "0", "2", "2", "0", "9", "…
+$ field_goal_pct                    &lt;dbl&gt; 44.4, 48.4, 44.8, 50.0, 36.8, 40.0, …
+$ field_goals_made                  &lt;int&gt; 24, 30, 26, 31, 21, 22, 28, 28, 25, …
+$ field_goals_attempted             &lt;int&gt; 54, 62, 58, 62, 57, 55, 60, 62, 65, …
+$ flagrant_fouls                    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ fouls                             &lt;int&gt; 15, 18, 15, 17, 13, 8, 16, 17, 9, 14…
+$ free_throw_pct                    &lt;dbl&gt; 73.3, 81.8, 81.8, 77.8, 75.0, 90.0, …
+$ free_throws_made                  &lt;int&gt; 11, 9, 9, 14, 3, 9, 9, 17, 12, 12, 5…
+$ free_throws_attempted             &lt;int&gt; 15, 11, 11, 18, 4, 10, 10, 19, 17, 1…
+$ largest_lead                      &lt;chr&gt; "2", "18", "5", "16", "0", "20", "7"…
+$ offensive_rebounds                &lt;int&gt; 9, 14, 8, 12, 6, 11, 8, 7, 8, 13, 5,…
+$ points_in_paint                   &lt;chr&gt; "40", "44", "26", "38", "20", "24", …
+$ steals                            &lt;int&gt; 3, 3, 2, 4, 8, 5, 3, 8, 7, 9, 3, 5, …
+$ team_turnovers                    &lt;int&gt; 0, 2, 1, 0, 0, 2, 1, 0, 0, 2, 0, 0, …
+$ technical_fouls                   &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, …
+$ three_point_field_goal_pct        &lt;dbl&gt; 14.3, 27.3, 47.8, 40.0, 26.3, 40.0, …
+$ three_point_field_goals_made      &lt;int&gt; 1, 6, 11, 10, 5, 10, 12, 6, 5, 8, 17…
+$ three_point_field_goals_attempted &lt;int&gt; 7, 22, 23, 25, 19, 25, 32, 17, 26, 2…
+$ total_rebounds                    &lt;int&gt; 28, 35, 29, 37, 28, 41, 37, 31, 32, …
+$ total_technical_fouls             &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, …
+$ total_turnovers                   &lt;int&gt; 9, 8, 8, 4, 11, 16, 15, 8, 10, 11, 9…
+$ turnover_points                   &lt;chr&gt; "13", "11", "6", "8", "10", "11", "1…
+$ turnovers                         &lt;int&gt; 9, 8, 8, 4, 11, 16, 15, 8, 10, 11, 9…
+$ opponent_team_id                  &lt;int&gt; 41, 2509, 41, 333, 2509, 152, 2550, …
+$ opponent_team_uid                 &lt;chr&gt; "s:40~l:41~t:41", "s:40~l:41~t:2509"…
+$ opponent_team_slug                &lt;chr&gt; "uconn-huskies", "purdue-boilermaker…
+$ opponent_team_location            &lt;chr&gt; "UConn", "Purdue", "UConn", "Alabama…
+$ opponent_team_name                &lt;chr&gt; "Huskies", "Boilermakers", "Huskies"…
+$ opponent_team_abbreviation        &lt;chr&gt; "CONN", "PUR", "CONN", "ALA", "PUR",…
+$ opponent_team_display_name        &lt;chr&gt; "UConn Huskies", "Purdue Boilermaker…
+$ opponent_team_short_display_name  &lt;chr&gt; "UConn", "Purdue", "UConn", "Alabama…
+$ opponent_team_color               &lt;chr&gt; "0c2340", "000000", "0c2340", "9e163…
+$ opponent_team_alternate_color     &lt;chr&gt; "f1f2f3", "cfb991", "f1f2f3", "fffff…
+$ opponent_team_logo                &lt;chr&gt; "https://a.espncdn.com/i/teamlogos/n…
+$ opponent_team_score               &lt;int&gt; 75, 60, 86, 72, 63, 50, 79, 77, 84, …</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="step-2-feature-engineering" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-feature-engineering">Step 2: Feature Engineering</h2>
+<p>We calculate team-level statistics that capture performance quality.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate four factors and efficiency metrics</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>team_features <span class="ot">&lt;-</span> all_games <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Four Factors</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">efg_pct =</span> (field_goals_made <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> three_point_field_goals_made) <span class="sc">/</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>              field_goals_attempted,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">tov_pct =</span> turnovers <span class="sc">/</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              (field_goals_attempted <span class="sc">+</span> <span class="fl">0.44</span> <span class="sc">*</span> free_throws_attempted <span class="sc">+</span> turnovers),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">orb_pct =</span> offensive_rebounds <span class="sc">/</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              (offensive_rebounds <span class="sc">+</span> defensive_rebounds),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ft_rate =</span> free_throws_made <span class="sc">/</span> field_goals_attempted,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Efficiency</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">possessions =</span> field_goals_attempted <span class="sc">-</span> offensive_rebounds <span class="sc">+</span> </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                  turnovers <span class="sc">+</span> <span class="fl">0.44</span> <span class="sc">*</span> free_throws_attempted,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortg =</span> (team_score <span class="sc">/</span> possessions) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">drtg =</span> (opponent_team_score <span class="sc">/</span> possessions) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">net_rating =</span> ortg <span class="sc">-</span> drtg,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">pace =</span> possessions</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    season, game_date, game_id,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    team_display_name, team_id, team_home_away,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    team_score, opponent_team_score,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    efg_pct, tov_pct, orb_pct, ft_rate,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    ortg, drtg, net_rating, pace</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate rolling averages (last 5 games)</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>team_rolling <span class="ot">&lt;-</span> team_features <span class="sc">%&gt;%</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(team_id, game_date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team_id) <span class="sc">%&gt;%</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">efg_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(efg_pct, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">tov_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(tov_pct, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">orb_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(orb_pct, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">ftr_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(ft_rate, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortg_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(ortg, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">drtg_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(drtg, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">net_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(net_rating, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">pace_L5 =</span> <span class="fu">lag</span>(zoo<span class="sc">::</span><span class="fu">rollmean</span>(pace, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>))</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(efg_L5)  <span class="co"># Only keep games where we have rolling history</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(team_rolling)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 24
+  season game_date   game_id team_display_name team_id team_home_away team_score
+   &lt;dbl&gt; &lt;date&gt;        &lt;int&gt; &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;               &lt;int&gt;
+1   2024 2023-11-29   4.02e8 Auburn Tigers           2 home                   74
+2   2024 2023-12-03   4.02e8 Auburn Tigers           2 away                   64
+3   2024 2023-12-09   4.02e8 Auburn Tigers           2 away                  104
+4   2024 2023-12-13   4.02e8 Auburn Tigers           2 home                   87
+5   2024 2023-12-17   4.02e8 Auburn Tigers           2 home                   91
+6   2024 2023-12-22   4.02e8 Auburn Tigers           2 home                   82
+# ℹ 17 more variables: opponent_team_score &lt;int&gt;, efg_pct &lt;dbl&gt;, tov_pct &lt;dbl&gt;,
+#   orb_pct &lt;dbl&gt;, ft_rate &lt;dbl&gt;, ortg &lt;dbl&gt;, drtg &lt;dbl&gt;, net_rating &lt;dbl&gt;,
+#   pace &lt;dbl&gt;, efg_L5 &lt;dbl&gt;, tov_L5 &lt;dbl&gt;, orb_L5 &lt;dbl&gt;, ftr_L5 &lt;dbl&gt;,
+#   ortg_L5 &lt;dbl&gt;, drtg_L5 &lt;dbl&gt;, net_L5 &lt;dbl&gt;, pace_L5 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><strong>Key concept:</strong> We use lagged rolling averages so we only use information available <em>before</em> each game. This prevents data leakage.</p>
+<hr>
+</section>
+<section id="step-3-adjust-data-granularity" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-adjust-data-granularity">Step 3: Adjust Data Granularity</h2>
+<p>Models predict games, not individual team performances. We need to pivot from team-game level to game level.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate home and away</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>home_games <span class="ot">&lt;-</span> team_rolling <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team_home_away <span class="sc">==</span> <span class="st">"home"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    game_id, season, game_date,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">home_team =</span> team_display_name,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">home_score =</span> team_score,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">home_efg =</span> efg_L5, <span class="at">home_tov =</span> tov_L5, <span class="at">home_orb =</span> orb_L5, <span class="at">home_ftr =</span> ftr_L5,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">home_ortg =</span> ortg_L5, <span class="at">home_drtg =</span> drtg_L5, <span class="at">home_net =</span> net_L5, <span class="at">home_pace =</span> pace_L5</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>away_games <span class="ot">&lt;-</span> team_rolling <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team_home_away <span class="sc">==</span> <span class="st">"away"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    game_id,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">away_team =</span> team_display_name,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">away_score =</span> team_score,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">away_efg =</span> efg_L5, <span class="at">away_tov =</span> tov_L5, <span class="at">away_orb =</span> orb_L5, <span class="at">away_ftr =</span> ftr_L5,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">away_ortg =</span> ortg_L5, <span class="at">away_drtg =</span> drtg_L5, <span class="at">away_net =</span> net_L5, <span class="at">away_pace =</span> pace_L5</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Join and calculate outcomes</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>games <span class="ot">&lt;-</span> home_games <span class="sc">%&gt;%</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(away_games, <span class="at">by =</span> <span class="st">"game_id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Outcome variables</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">home_win =</span> <span class="fu">as.factor</span>(<span class="fu">if_else</span>(home_score <span class="sc">&gt;</span> away_score, <span class="st">"Yes"</span>, <span class="st">"No"</span>)),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_diff =</span> home_score <span class="sc">-</span> away_score,  <span class="co"># positive = home won</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_score =</span> home_score <span class="sc">+</span> away_score,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Matchup differentials</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">efg_diff =</span> home_efg <span class="sc">-</span> away_efg,</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">tov_diff =</span> home_tov <span class="sc">-</span> away_tov,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">orb_diff =</span> home_orb <span class="sc">-</span> away_orb,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">ftr_diff =</span> home_ftr <span class="sc">-</span> away_ftr,</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortg_diff =</span> home_ortg <span class="sc">-</span> away_ortg,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">drtg_diff =</span> home_drtg <span class="sc">-</span> away_drtg,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">net_diff =</span> home_net <span class="sc">-</span> away_net,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">pace_avg =</span> (home_pace <span class="sc">+</span> away_pace) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(games)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 10,706
+Columns: 34
+$ game_id     &lt;int&gt; 401574556, 401583797, 401583798, 401583799, 401583800, 401…
+$ season      &lt;dbl&gt; 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024, 2024…
+$ game_date   &lt;date&gt; 2023-11-29, 2023-12-13, 2023-12-17, 2023-12-22, 2023-12-3…
+$ home_team   &lt;chr&gt; "Auburn Tigers", "Auburn Tigers", "Auburn Tigers", "Auburn…
+$ home_score  &lt;int&gt; 74, 87, 91, 82, 101, 88, 66, 93, 82, 81, 99, 101, 59, 78, …
+$ home_efg    &lt;dbl&gt; 0.5411528, 0.4976382, 0.5032872, 0.5060294, 0.5290879, 0.5…
+$ home_tov    &lt;dbl&gt; 0.15635339, 0.11422651, 0.09844881, 0.08669590, 0.10987814…
+$ home_orb    &lt;dbl&gt; 0.3092027, 0.3436161, 0.3289103, 0.3318864, 0.3005450, 0.2…
+$ home_ftr    &lt;dbl&gt; 0.3115414, 0.3278700, 0.2922931, 0.2797149, 0.2985918, 0.3…
+$ home_ortg   &lt;dbl&gt; 115.9966, 116.5411, 118.5297, 119.7185, 120.0627, 129.3485…
+$ home_drtg   &lt;dbl&gt; 93.00273, 91.96987, 91.83074, 97.11057, 97.06614, 94.68838…
+$ home_net    &lt;dbl&gt; 22.993876, 24.571234, 26.698965, 22.607937, 22.996599, 34.…
+$ home_pace   &lt;dbl&gt; 71.112, 68.808, 69.352, 69.800, 71.048, 72.024, 70.832, 69…
+$ away_team   &lt;chr&gt; "Virginia Tech Hokies", "UNC Asheville Bulldogs", "USC Tro…
+$ away_score  &lt;int&gt; 57, 62, 75, 62, 66, 68, 55, 78, 59, 54, 81, 61, 70, 63, 78…
+$ away_efg    &lt;dbl&gt; 0.4951475, 0.4959706, 0.5466798, 0.4568202, 0.5823009, 0.5…
+$ away_tov    &lt;dbl&gt; 0.1462222, 0.1420995, 0.1595115, 0.1317813, 0.1235595, 0.1…
+$ away_orb    &lt;dbl&gt; 0.2392959, 0.2960297, 0.3057633, 0.3065729, 0.2551598, 0.2…
+$ away_ftr    &lt;dbl&gt; 0.3091771, 0.3705427, 0.2814960, 0.1790102, 0.2515047, 0.1…
+$ away_ortg   &lt;dbl&gt; 105.03712, 108.30775, 111.93998, 99.49453, 122.49550, 110.…
+$ away_drtg   &lt;dbl&gt; 98.71165, 97.90928, 107.47446, 98.58639, 103.04818, 107.07…
+$ away_net    &lt;dbl&gt; 6.3254647, 10.3984684, 4.4655215, 0.9081459, 19.4473169, 3…
+$ away_pace   &lt;dbl&gt; 68.552, 73.464, 71.960, 70.416, 70.336, 67.512, 67.024, 73…
+$ home_win    &lt;fct&gt; Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes, Yes…
+$ score_diff  &lt;int&gt; 17, 25, 16, 20, 35, 20, 11, 15, 23, 27, 18, 40, -11, 15, 1…
+$ total_score &lt;int&gt; 131, 149, 166, 144, 167, 156, 121, 171, 141, 135, 180, 162…
+$ efg_diff    &lt;dbl&gt; 0.046005368, 0.001667557, -0.043392585, 0.049209190, -0.05…
+$ tov_diff    &lt;dbl&gt; 0.0101312371, -0.0278730341, -0.0610627094, -0.0450853666,…
+$ orb_diff    &lt;dbl&gt; 0.069906866, 0.047586434, 0.023146954, 0.025313589, 0.0453…
+$ ftr_diff    &lt;dbl&gt; 0.002364308, -0.042672706, 0.010797117, 0.100704608, 0.047…
+$ ortg_diff   &lt;dbl&gt; 10.9594823, 8.2333595, 6.5897241, 20.2239733, -2.4327520, …
+$ drtg_diff   &lt;dbl&gt; -5.708929, -5.939406, -15.643720, -1.475818, -5.982034, -1…
+$ net_diff    &lt;dbl&gt; 16.6684115, 14.1727659, 22.2334439, 21.6997914, 3.5492819,…
+$ pace_avg    &lt;dbl&gt; 69.832, 71.136, 70.656, 70.108, 70.692, 69.768, 68.928, 71…</code></pre>
+</div>
+</div>
+<p>Now each row is one game with features for both teams and three outcome variables.</p>
+<hr>
+</section>
+<section id="step-4-train-test-split" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-train-test-split">Step 4: Train-Test Split</h2>
+<p>We use 2024 season for training and 2025 season for testing. This simulates real-world usage: train on history, predict the future.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> games <span class="sc">%&gt;%</span> <span class="fu">filter</span>(season <span class="sc">==</span> <span class="dv">2024</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> games <span class="sc">%&gt;%</span> <span class="fu">filter</span>(season <span class="sc">==</span> <span class="dv">2025</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Training games:"</span>, <span class="fu">nrow</span>(train_data), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training games: 4889 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Testing games:"</span>, <span class="fu">nrow</span>(test_data), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Testing games: 5817 </code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="model-1-binary-outcome-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="model-1-binary-outcome-prediction">Model 1: Binary Outcome Prediction</h2>
+<p><strong>Goal:</strong> Estimate probability that the home team wins</p>
+<p><strong>Algorithm:</strong> Logistic Regression</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select features for classification</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>features_binary <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"efg_diff"</span>, <span class="st">"tov_diff"</span>, <span class="st">"orb_diff"</span>, <span class="st">"ftr_diff"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"net_diff"</span>, <span class="st">"pace_avg"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>train_binary <span class="ot">&lt;-</span> train_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(home_win, <span class="fu">all_of</span>(features_binary)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>test_binary <span class="ot">&lt;-</span> test_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(home_win, <span class="fu">all_of</span>(features_binary)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Train model</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>model_binary <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  home_win <span class="sc">~</span> .,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_binary,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"glm"</span>,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"cv"</span>,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">number =</span> <span class="dv">5</span>,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">classProbs =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">summaryFunction =</span> twoClassSummary</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"ROC"</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>pred_binary <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_binary, test_binary, <span class="at">type =</span> <span class="st">"prob"</span>)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>test_binary<span class="sc">$</span>pred_prob <span class="ot">&lt;-</span> pred_binary<span class="sc">$</span>Yes</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>test_binary<span class="sc">$</span>pred_class <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_binary, test_binary)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Accuracy</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>accuracy <span class="ot">&lt;-</span> <span class="fu">mean</span>(test_binary<span class="sc">$</span>pred_class <span class="sc">==</span> test_binary<span class="sc">$</span>home_win)</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Test Set Accuracy:"</span>, <span class="fu">round</span>(accuracy <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>), <span class="st">"%</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test Set Accuracy: 68.4 %</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confusion Matrix</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(test_binary<span class="sc">$</span>pred_class, test_binary<span class="sc">$</span>home_win)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   No  Yes
+       No   741  524
+       Yes 1315 3237
+                                          
+               Accuracy : 0.6839          
+                 95% CI : (0.6717, 0.6958)
+    No Information Rate : 0.6466          
+    P-Value [Acc &gt; NIR] : 1.062e-09       
+                                          
+                  Kappa : 0.2422          
+                                          
+ Mcnemar's Test P-Value : &lt; 2.2e-16       
+                                          
+            Sensitivity : 0.3604          
+            Specificity : 0.8607          
+         Pos Pred Value : 0.5858          
+         Neg Pred Value : 0.7111          
+             Prevalence : 0.3534          
+         Detection Rate : 0.1274          
+   Detection Prevalence : 0.2175          
+      Balanced Accuracy : 0.6105          
+                                          
+       'Positive' Class : No              
+                                          </code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong> I’m really happy about this output, because it should spur us to investigate our data more.</p>
+<p>The model predicted 1,315 false positives (it predicted 1,315 home wins that were actually losses) according to the <a href="https://www.youtube.com/watch?v=Kdsp6soqA7o">Confusion Matrix</a>. The model is likely over-relying on the home-court advantage, which can work slightly better than a coin flip but it is not nuanced enough to when the away team is actually better.</p>
+<p>Ultimately, if I were to develop a machine learning model to help me determine moneyline, I would go for one that outputs probabilities rather than straight-up Yes/No outcomes.</p>
+<hr>
+</section>
+<section id="model-2-score-differential-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="model-2-score-differential-prediction">Model 2: Score Differential Prediction</h2>
+<p><strong>Goal:</strong> What is the likely difference in final scores?</p>
+<p><strong>Algorithm:</strong> Gradient Boosting Machine</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select features</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>features_diff <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"efg_diff"</span>, <span class="st">"tov_diff"</span>, <span class="st">"orb_diff"</span>, <span class="st">"ftr_diff"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ortg_diff"</span>, <span class="st">"drtg_diff"</span>, <span class="st">"net_diff"</span>, <span class="st">"pace_avg"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>train_diff <span class="ot">&lt;-</span> train_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score_diff, <span class="fu">all_of</span>(features_diff)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>test_diff <span class="ot">&lt;-</span> test_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(score_diff, <span class="fu">all_of</span>(features_diff)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Train model</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>model_diff <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  score_diff <span class="sc">~</span> .,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_diff,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"gbm"</span>,</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">5</span>),</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">3</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>pred_diff <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_diff, test_diff)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>test_diff<span class="sc">$</span>predicted <span class="ot">&lt;-</span> pred_diff</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean Absolute Error</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>mae_diff <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(test_diff<span class="sc">$</span>score_diff <span class="sc">-</span> test_diff<span class="sc">$</span>predicted))</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Test Set MAE:"</span>, <span class="fu">round</span>(mae_diff, <span class="dv">2</span>), <span class="st">"points</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test Set MAE: 10.55 points</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals plot</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>test_diff <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> predicted, <span class="at">y =</span> score_diff)) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Model 2: Predicted vs Actual Score Differential"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Predicted Differential"</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Actual Differential"</span>,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Red line = perfect prediction"</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Interpretation:</strong> On average, predictions are off by about 10.55 points. That’s the model’s typical error.</p>
+<hr>
+</section>
+<section id="model-3-combined-score-prediction" class="level2">
+<h2 class="anchored" data-anchor-id="model-3-combined-score-prediction">Model 3: Combined Score Prediction</h2>
+<p><strong>Goal:</strong> Estimate the likely total combined score.</p>
+<p><strong>Algorithm:</strong> Random Forest (robust to outliers, handles interactions well)</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select features</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>features_total <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"home_ortg"</span>, <span class="st">"away_ortg"</span>, <span class="st">"home_drtg"</span>, <span class="st">"away_drtg"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"home_pace"</span>, <span class="st">"away_pace"</span>, <span class="st">"pace_avg"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>train_total <span class="ot">&lt;-</span> train_data <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(total_score, <span class="fu">all_of</span>(features_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>test_total <span class="ot">&lt;-</span> test_data <span class="sc">%&gt;%</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(total_score, <span class="fu">all_of</span>(features_total)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>()</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Train model</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>model_total <span class="ot">&lt;-</span> <span class="fu">train</span>(</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>  total_score <span class="sc">~</span> .,</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> train_total,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"rf"</span>,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">5</span>),</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">tuneLength =</span> <span class="dv">3</span>,</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">ntree =</span> <span class="dv">100</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>pred_total <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_total, test_total)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>test_total<span class="sc">$</span>predicted <span class="ot">&lt;-</span> pred_total</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean Absolute Error</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>mae_total <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(test_total<span class="sc">$</span>total_score <span class="sc">-</span> test_total<span class="sc">$</span>predicted))</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Test Set MAE:"</span>, <span class="fu">round</span>(mae_total, <span class="dv">2</span>), <span class="st">"points</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Test Set MAE: 13.71 points</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals plot</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>test_total <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> predicted, <span class="at">y =</span> total_score)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="dv">1</span>, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Model 3: Predicted vs Actual Total Score"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Predicted Total"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Actual Total"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Red line = perfect prediction"</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Interpretation:</strong> Total score predictions average about 13.7 points of error.</p>
+<hr>
+</section>
+<section id="step-5-apply-models-to-kansas-vs.-miami" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-apply-models-to-kansas-vs.-miami">Step 5: Apply Models to Kansas vs.&nbsp;Miami</h2>
+<p>Now let’s use our trained models to analyze a hypothetical match-up.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get current season data</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>current_season <span class="ot">&lt;-</span> <span class="fu">load_mbb_team_box</span>(<span class="at">seasons =</span> <span class="dv">2026</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2026</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to Kansas and Miami</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>hawks_2026 <span class="ot">&lt;-</span> current_season <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team_display_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Miami (OH) RedHawks"</span>, <span class="st">"Kansas Jayhawks"</span>))</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate features (same process as training data)</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>hawks_features <span class="ot">&lt;-</span> hawks_2026 <span class="sc">%&gt;%</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">efg_pct =</span> (field_goals_made <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> three_point_field_goals_made) <span class="sc">/</span> </span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>              field_goals_attempted,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">tov_pct =</span> turnovers <span class="sc">/</span> </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>              (field_goals_attempted <span class="sc">+</span> <span class="fl">0.44</span> <span class="sc">*</span> free_throws_attempted <span class="sc">+</span> turnovers),</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">orb_pct =</span> offensive_rebounds <span class="sc">/</span> </span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>              (offensive_rebounds <span class="sc">+</span> defensive_rebounds),</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">ft_rate =</span> free_throws_made <span class="sc">/</span> field_goals_attempted,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">possessions =</span> field_goals_attempted <span class="sc">-</span> offensive_rebounds <span class="sc">+</span> </span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                  turnovers <span class="sc">+</span> <span class="fl">0.44</span> <span class="sc">*</span> free_throws_attempted,</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortg =</span> (team_score <span class="sc">/</span> possessions) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">drtg =</span> (opponent_team_score <span class="sc">/</span> possessions) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">net_rating =</span> ortg <span class="sc">-</span> drtg,</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">pace =</span> possessions</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(team_id, game_date) <span class="sc">%&gt;%</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team_id) <span class="sc">%&gt;%</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">efg_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(efg_pct, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">tov_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(tov_pct, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">orb_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(orb_pct, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">ftr_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(ft_rate, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortg_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(ortg, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">drtg_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(drtg, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">net_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(net_rating, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>),</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">pace_L5 =</span> zoo<span class="sc">::</span><span class="fu">rollmean</span>(pace, <span class="at">k =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">align =</span> <span class="st">"right"</span>)</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Get latest stats for each team</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>kansas_latest <span class="ot">&lt;-</span> hawks_features <span class="sc">%&gt;%</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team_display_name <span class="sc">==</span> <span class="st">"Kansas Jayhawks"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(game_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>miami_latest <span class="ot">&lt;-</span> hawks_features <span class="sc">%&gt;%</span></span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(team_display_name <span class="sc">==</span> <span class="st">"Miami (OH) RedHawks"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(game_date)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Create matchup data (assuming Kansas at home)</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>matchup <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_team =</span> <span class="st">"Kansas Jayhawks"</span>,</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_team =</span> <span class="st">"Miami (OH) RedHawks"</span>,</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_efg =</span> kansas_latest<span class="sc">$</span>efg_L5,</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_tov =</span> kansas_latest<span class="sc">$</span>tov_L5,</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_orb =</span> kansas_latest<span class="sc">$</span>orb_L5,</span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_ftr =</span> kansas_latest<span class="sc">$</span>ftr_L5,</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_ortg =</span> kansas_latest<span class="sc">$</span>ortg_L5,</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_drtg =</span> kansas_latest<span class="sc">$</span>drtg_L5,</span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_net =</span> kansas_latest<span class="sc">$</span>net_L5,</span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>  <span class="at">home_pace =</span> kansas_latest<span class="sc">$</span>pace_L5,</span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_efg =</span> miami_latest<span class="sc">$</span>efg_L5,</span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_tov =</span> miami_latest<span class="sc">$</span>tov_L5,</span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_orb =</span> miami_latest<span class="sc">$</span>orb_L5,</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_ftr =</span> miami_latest<span class="sc">$</span>ftr_L5,</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_ortg =</span> miami_latest<span class="sc">$</span>ortg_L5,</span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_drtg =</span> miami_latest<span class="sc">$</span>drtg_L5,</span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_net =</span> miami_latest<span class="sc">$</span>net_L5,</span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a>  <span class="at">away_pace =</span> miami_latest<span class="sc">$</span>pace_L5</span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">efg_diff =</span> home_efg <span class="sc">-</span> away_efg,</span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a>    <span class="at">tov_diff =</span> home_tov <span class="sc">-</span> away_tov,</span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">orb_diff =</span> home_orb <span class="sc">-</span> away_orb,</span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">ftr_diff =</span> home_ftr <span class="sc">-</span> away_ftr,</span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">ortg_diff =</span> home_ortg <span class="sc">-</span> away_ortg,</span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">drtg_diff =</span> home_drtg <span class="sc">-</span> away_drtg,</span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">net_diff =</span> home_net <span class="sc">-</span> away_net,</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">pace_avg =</span> (home_pace <span class="sc">+</span> away_pace) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate predictions</span></span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a>pred_win_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_binary, matchup, <span class="at">type =</span> <span class="st">"prob"</span>)<span class="sc">$</span>Yes</span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>pred_diff <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_diff, matchup)</span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a>pred_total <span class="ot">&lt;-</span> <span class="fu">predict</span>(model_total, matchup)</span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a>  <span class="at">Metric =</span> <span class="fu">c</span>(<span class="st">"Home Win Probability"</span>, <span class="st">"Expected Score Differential"</span>, <span class="st">"Expected Total Score"</span>),</span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">c</span>(</span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(pred_win_prob <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>), <span class="st">"%"</span>),</span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">if_else</span>(pred_diff <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"+"</span>, <span class="st">""</span>), <span class="fu">round</span>(pred_diff, <span class="dv">1</span>), <span class="st">" points"</span>),</span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(pred_total, <span class="dv">1</span>), <span class="st">" points"</span>)</span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a>results <span class="sc">%&gt;%</span></span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Kansas (Home) vs Miami: Model Predictions"</span>,</span>
+<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a>    <span class="at">align =</span> <span class="fu">c</span>(<span class="st">"l"</span>, <span class="st">"r"</span>)</span>
+<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Kansas (Home) vs Miami: Model Predictions</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Metric</th>
+<th style="text-align: right;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Home Win Probability</td>
+<td style="text-align: right;">43.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expected Score Differential</td>
+<td style="text-align: right;">-2.4 points</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Expected Total Score</td>
+<td style="text-align: right;">151 points</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr>
+</section>
+<section id="interpreting-the-results" class="level2">
+<h2 class="anchored" data-anchor-id="interpreting-the-results">Interpreting the Results</h2>
+<p><strong>Win Probability:</strong> Based on recent form and match-up metrics, the model estimates likelihood of home team success. Given that my model tends to default to the home-team winning, this one is quite a shocker.</p>
+<p><strong>Score Differential:</strong> The expected margin. Positive means home team favored, negative means away team favored.</p>
+<p><strong>Total Score:</strong> The expected combined output from both teams. Influenced by pace and efficiency.</p>
+<p><strong>Take-away:</strong> I’m very surprised that, even when displaying results that are well within our established margin-of-error, we are seeing compelling evidence that a hypothetical game between Miami and Kansas at Allen Fieldhouse in Lawrence is essentially a toss-up/leans Miami.</p>
+<p>The reason I say toss up is because the of the result of the margin model (expected score differential). That model showed an MAE of 10.55. I would not count on Miami actually beating the Jayhawks unless the prediction for the match-up resulted in a value of, say, -11. In which case, yeah I’d declare that I’m picking Miami.</p>
+<hr>
+</section>
+<section id="what-makes-these-models-useful" class="level2">
+<h2 class="anchored" data-anchor-id="what-makes-these-models-useful">What Makes These Models Useful</h2>
+<p><strong>They’re trained on real data:</strong> Thousands of historical games with known outcomes.</p>
+<p><strong>They use predictive features:</strong> Rolling averages prevent overfitting to single-game variance.</p>
+<p><strong>They’re conservative:</strong> MAE of 8-12 points means we know our uncertainty.</p>
+<p><strong>They’re explainable:</strong> Coefficients and feature importance show what drives predictions.</p>
+<hr>
+</section>
+<section id="feature-importance" class="level2">
+<h2 class="anchored" data-anchor-id="feature-importance">Feature Importance</h2>
+<p>Let’s see what matters most for score total predictions:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract feature importance from Random Forest model</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>importance <span class="ot">&lt;-</span> <span class="fu">varImp</span>(model_total, <span class="at">scale =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(importance, <span class="at">top =</span> <span class="dv">8</span>, <span class="at">main =</span> <span class="st">"Top Features: Score Differential Model"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="limitations-and-honest-assessment" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-and-honest-assessment">Limitations and Honest Assessment</h2>
+<p><strong>What these models don’t account for:</strong></p>
+<ul>
+<li>Injuries or lineup changes</li>
+<li>Motivational factors (rivalry games, tournament pressure)</li>
+<li>Referee tendencies</li>
+<li>Weather or travel fatigue</li>
+<li>Matchup-specific adjustments</li>
+</ul>
+<p><strong>Why we’re transparent about error rates:</strong></p>
+<p>An MAE of 10 points on differential means roughly 2 out of 3 predictions fall within 10 points of actual. That’s useful but not clairvoyant. We show our work so you can judge the quality yourself.</p>
+<p><strong>How to use these predictions:</strong></p>
+<p>They’re inputs to your own analysis, not commandments. If our model says Team A is slightly favored but you know their starting point guard is injured, adjust accordingly. Statistical models provide baselines; domain knowledge provides context.</p>
+<hr>
+</section>
+<section id="reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
+<p>All code in this post is reproducible. You can run it yourself with:</p>
+<ol type="1">
+<li>Install packages: <code>hoopR</code>, <code>tidyverse</code>, <code>caret</code>, <code>janitor</code></li>
+<li>Copy the code chunks sequentially</li>
+<li>Adjust team names to analyze any matchup</li>
+</ol>
+<p>The data comes from ESPN via hoopR (free). The models are standard algorithms (no proprietary methods). The methodology is documented here.</p>
+<hr>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This concludes my three part series on building college basketball prediction models.</p>
+<hr>
+<p><em>Want to see these predictions daily? We apply this exact pipeline to generate analysis for premium subscribers. Methodology transparent. Results tracked. No black boxes.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© 2026 ProPlotFits</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../../methodology.html">Methodology</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

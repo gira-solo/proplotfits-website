@@ -1,6 +1,6 @@
 ---
 title: "ProPlotFits"
-subtitle: "Data-Driven NCAA Basketball Intelligence"
+subtitle: "Beta testing responsible data driven analyses"
 format:
   html:
     toc: false

@@ -1,0 +1,14 @@
+---
+title: "Metrics & Analytics"
+listing:
+  contents: 
+    - "posts/**/index.qmd"
+  sort: "date desc"
+  type: default
+  categories: true
+  fields: [date, title, description, categories]
+  date-format: "MMM D, YYYY"
+page-layout: full
+---
+
+College Basketball, MLB, and other insights.
