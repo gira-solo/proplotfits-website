@@ -2,12 +2,14 @@
 title: "Pick of the Day: 21 February 2026"
 description: "Florida State Seminoles @ Clemson Tigers"
 date: last-modified
-categories: [college-basketball, tutorial, kansas, miami-oh]
+categories: [college-basketball, deep-dive, florida-state, clemson]
 author: "ProPlotFits"
 ---
 
 **Tip-Off:** 1:00 PM Eastern
+
 **Venue:** Littlejohn Coliseum, Clemson, South Carolina
+
 **Conference:** ACC
 
 ---
