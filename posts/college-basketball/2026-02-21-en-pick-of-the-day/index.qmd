@@ -1,0 +1,167 @@
+---
+title: "Pick of the Day: 21 February 2026"
+description: "Florida State Seminoles @ Clemson Tigers"
+date: last-modified
+categories: [college-basketball, tutorial, kansas, miami-oh]
+author: "ProPlotFits"
+---
+
+**Tip-Off:** 1:00 PM Eastern
+**Venue:** Littlejohn Coliseum, Clemson, South Carolina
+**Conference:** ACC
+
+---
+
+## Recent Form
+
+The 13-13 (6-7) Seminoles visit the 20-7 (10-4) Tigers in Clemson, South Carolina for a early afternoon tip-off. Before we get into the picks, let's observe the head-to-head stats comparison:
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+library(gt)
+
+# Comparison table from our analysis
+comparison <- read_csv("fsu_clem_stats.csv")
+
+comparison |> 
+  gt() |> 
+  tab_header(
+    title = 'Last 5 Games Statistical Comparison',
+    subtitle = 'Florida State Seminoles @ Clemson Tigers'
+  ) |> 
+  fmt_number(
+    columns = c(Home, Away),
+    decimals = 1
+  ) |> 
+  tab_style(
+    style = cell_fill(color = '#782F40', alpha = 0.3),
+    locations = cells_body(
+      columns = everything(), 
+      rows = Advantage == 'Florida State Seminoles')
+  ) |> 
+  tab_style(
+    style = cell_fill(color = '#F56600', alpha = 0.3),
+    locations = cells_body(
+      columns = everything(), 
+      rows = Advantage == 'Clemson Tigers') 
+  ) |> 
+  tab_style(
+    style = cell_text(weight = 'bold'),
+    locations = cells_body(
+      columns = Advantage
+    )
+  ) |> 
+  tab_source_note(
+    source_note = "Source: hoopR | ProPlotFits Analysis"
+  ) |> 
+  opt_stylize(style = 6, color = 'gray')
+  
+```
+
+
+### Breakdown
+
+Let's skip the first four metrics since the two teams are basically even. The story is in the Offensive and Defensive Efficiencies and thus ultimately in the Net Rating. Looking at just descriptive statistics, Florida State on average scores 12 more points than they allow, while Clemson allows 2.2 points more than they score, creating a difference of 14.2. Clemson is also allowing 12 more points per game than Florida State.
+
+---
+
+## Model Output
+
+```{r}
+#| echo: false
+
+predictions <- tibble(
+  Model = c("Win Probability", "Predicted Margin", "Predicted Total"),
+  Prediction = c("Clemson 50.6%", "Clemson by 0.3", "139.5 points"),
+  `Model MAE` = c("69%", "9.5 points", "13.5 points")
+)
+
+predictions |> 
+  gt() |> 
+  tab_caption("Model Predictions for Florida State @ Clemson")
+  
+```
+
+Our models give Clemson a 50.6% chance to win at home. The final score should either be 70-69 or 71-70. 
+
+### Recognizing Model Uncertainty
+
+It would be irresponsible to look at this output and take it for its word without contextualizing these outputs with what our model error (Mean Absolute Error, MAE) is saying. 
+
+Our spread model has an MAE of 9.5, meaning on average across all games in our test set, the predictions were off by about 9-10 points from the true margin. When say "Clemson by 0.3" we're actually saying "In the midst of intense noise, there is the tiniest bit of signal indicating that Clemson will win but just barely". We aren't claiming precision here.
+
+**Why does the model favor Clemson despite FSU's better stats?** Let's be honest and say the models aren't actually favoring one team or the other. "This is as close of a match-up you're going to get" is essentially what they are saying.
+
+This doesn't mean we don't have an edge.
+
+---
+
+## Comparing to DraftKings
+
+Let's look at the odds that DraftKings gives for this match-up and compare to our models.
+
+```{r}
+#| echo:false
+
+vegas_comparison <- tibble(
+  Metric = c("Spread", "Total"),
+  `Our Model` = c("Clem -0.3", "139.5"),
+  Vegas = c("Clem -8.5", "143.5"),
+  Gap = c("8.2 points", "4 points"),
+  `% of MAE` = c("86.3%", "29.6%"),
+  Confidence = c("Very High", "Low")
+)
+
+vegas_comparison |> 
+  gt() |> 
+  tab_caption("DraftKings Lines vs Model Outputs")
+
+```
+
+
+### Edge Analysis
+
+Before I go into what this table is showing, let's breakdown how I'd classify the confidence of my edges (comparing the difference between Vegas and our model with our model MAE).
+
+- **Elite (>100% of MAE):** Highest conviction but doesn't happen that often. This shows that Vegas is way off
+- **Very High (80%-100%):** Don't miss these high premium picks
+- **High (60%-80%):** Strong and worth betting
+- **Moderate (40%-60%):** Definitely the place to incorporate additional information
+- **Low (20%-40%):** Maybe there is value, but it's definitely not premium
+- **Noise (0%-20%):** Model and Vegas agree, so we ignore
+
+Now here's how our match-up stacks against DraftKings.
+
+**Totals:** The difference between our model and Vegas is 4 points, which is less than 30% of our MAE. It is an edge, but not that great. I'd personally skip.
+
+**Spread:** Now we got something interesting. Our model is showing that these two teams are dead even, and it even predicts that Clemson will win by less than a point. DraftKings thinks Clemson will win by at least 9, and all indications from our analysis conclude that that margin is unlikely to happen. I will definitely take this one.
+
+---
+
+## The Picks
+
+**Total:** Take the UNDER
+
+According to each team's `pace`, this game should average 65.3 possessions, and at 1.07 points per possession (average for college basketball), that's `65.3*1.07*2 = ` 139.7 projected total just based on raw stats. As I said, I think I will pass.
+
+**Spread:** Take Florida St +8.5
+
+I just don't see how Clemson has enough skill to beat a scrappy FSU squad by 9 points. FSU beats them in head-to-head stats match-up except for offensive rebounding. 
+
+--- 
+
+## Conclusion
+
+I hope you enjoyed this breakdown. This is a drawn-out version of what I'm doing to discover edges analytically, but I wanted to show y'all how to think statistically and probabilistically rather than just going with gut feeling.
+
+Data-driven betting looks like this. We "run the numbers", then take a second to sit back and engage with the information before going of and placing bets. And I'm showing you my work, which is the difference between guessing and analysis.
+
+---
+
+*Want to see these predictions daily with full model outputs and edge analysis? Subscribe for $25/month (reach out to peter@solplots.com) and lock in that rate forever (first 50 subscribers only)*
+
+
+
+
