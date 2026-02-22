@@ -1,0 +1,87 @@
+---
+title: "Cashing in on Model Uncertainy"
+description: "How an inconclusive result ends up becoming valuable information"
+date: last-modified
+categories: [college-basketball, model-uncertainty, florida-state, clemson]
+author: "ProPlotFits"
+---
+
+## Recap
+
+Yesterday, I [shared](https://proplotfits.com/posts/college-basketball/2026-02-21-en-pick-of-the-day/) the very first pick and deep dive analysis for ProPlotFits.
+
+We identified that the game between Florida State and Clemson as having a "very high" confidence play despite the fact that our model projected a draw (Clemson by 0.3). FSU secured a tough road win at Clemson, 70-65, covering by 13.5 points.
+
+**Final Score:** Florida State 70, Clemson 65 **Our Pick:** Florida State +8.5 WINNER (I passed on taking the UNDER, even though it was what I interpreted as the correct total pick, and that too hit) **Model Prediction:** Clemson by 0.3 **Vegas Line:** Clemson -8.5 **Actual Margin:** Florida State by 5
+
+------------------------------------------------------------------------
+
+## Model Summary
+
+Our models indicated that this game would be a toss-up, projecting a Clemson margin of victory of 0.3 points with a 50.6% win probability. However, Vegas disagreed dramatically and set Clemson at -8.5, creating a gap of 8.2 points representing 86.3% of our spread model's average error. Thus, it was a very high confidence edge.
+
+This result validates our conclusion: Clemson is not skilled enough to beat FSU by at least nine points, so we predict that FSU will cover. They did in fact cover as well as win outright, and our model was at least correct in the sense that the margin was going to be very close.
+
+------------------------------------------------------------------------
+
+## Why This Matters
+
+Our goal is not to develop a model that predicts more accurately than everyone else. Rather, we are simply identifying whether or not there is a significant gap, or "edge", between what our model is saying and what Vegas is saying. This is the difference between model precision and edge identification, which has plenty of use cases well beyond sports betting.
+
+In fact, I am coming to the realization that betting on sports responsibly requires almost identical levels of discipline and nuanced understanding of data that are required by scientists who are committed to sharing reproducible analyses and investigations.
+
+Back to FSU \@ Clemson, our model prediction Clemson by 0.3, and the result showed FSU by 5, an error of 5.3. However, we already know that our spread model's stated uncertainty (9.5 MAE). I'll paraphrase what I said yesterday: "When we say Clemson by 0.3, we really mean it's a straight toss-up; the margin will be 1-2 possessions at most."
+
+What our model helped us correctly predict was that Vegas (DraftKings) had significantly mispriced FSU \@ Clemson.
+
+------------------------------------------------------------------------
+
+## A Methodology That Works
+
+To summarize our process from yesterday:
+
+1.  We discovered *descriptive analytics* that showed FSU having better efficiency scores
+2.  Model output showed a dead-even match-up (50.6% vs 49.4%)
+3.  Vegas sets match-up at Clemson -8.5
+4.  Gap analysis showed our predicted spread was 86% of model MAE -\> Very High confidence
+5.  Pick FSU +8.5
+
+Responsible sports betting starts with a logical process that holds up.
+
+The stats showed FSU was competitive, and the model correctly predicted a close game. Therefore, we cashed out in the midst of faux-uncertainty.
+
+Personally, I don't exactly follow ACC basketball. That conference contains many rivals of the Jayhawks (UNC, Duke, Syracuse) as well as "The U" (fun fact Miami University in Oxford, Ohio was founded while Florida was still part of Spain, so as far as I'm concerned my Miami is the original Miami).
+
+But thanks to open-source programmers and data scientists we have resources like [hoopr](https://hoopr.sportsdataverse.org/) for clean college hoops data and [caret](https://topepo.github.io/caret/index.html) for straight-forward deployment of regression models, the kind we use to predict margins and totals. Without having to be someone who obsessively follows sports, I can plug in anytime because people before me have put in the work to make these data and tools available without cost.
+
+------------------------------------------------------------------------
+
+## One Pick
+
+Do not extrapolate this result. Of all my super confident picks yesterday (including this one) I went 14-1. That result means nothing until we have several more weeks of model predictions that can be evaluated. Then we can more accurately determine of our framework is sound.
+
+However, this process is coherent in identifying the cases in which the market disagrees with our analysis as well as in communicating the uncertainty honestly. This is how we see value and make picks accordingly.
+
+Each step is a check point that forces us to consider "are we still confident enough that there might be an edge, or do we move on to the next match-up?". Before we make the pick, we must calculate the gap-to-MAE ratio. That comes after knowing what the line is set at, which comes after interpreting the model output, which comes after gathering the most up-to-date descriptive statistics of the two teams.
+
+And before all that could be done, we had to go through the whole machine learning development process (data mining, feature engineering, train-test split, model selection, cross validation, etc.) before even thinking about what kind of bets we should be making.
+
+Next step: prove a 60% prediction accuracy over 100+ picks.
+
+------------------------------------------------------------------------
+
+## Track Record
+
+I apologize and say that I haven't been posting as often as I should to verify that my methods are sound. I never placed a sports bet before January 1, 2026. Since then I have gone 18-12 on personal bets. With Friday and Saturday complete I went 18-1 but just paper trading.
+
+I have no qualms claiming a record of 36-13 (73.4%).
+
+But now I will be way more transparent tracking my W-L record.
+
+------------------------------------------------------------------------
+
+## What's next
+
+More consistent picks and pick evaluations.
+
+*Full daily picks and analyses to subscribers. Email peter\@solplots.com to lock in \$25/month rate (first 50 subscribers only)*
