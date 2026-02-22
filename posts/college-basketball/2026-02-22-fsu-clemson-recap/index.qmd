@@ -12,7 +12,15 @@ Yesterday, I [shared](https://proplotfits.com/posts/college-basketball/2026-02-2
 
 We identified that the game between Florida State and Clemson as having a "very high" confidence play despite the fact that our model projected a draw (Clemson by 0.3). FSU secured a tough road win at Clemson, 70-65, covering by 13.5 points.
 
-**Final Score:** Florida State 70, Clemson 65 **Our Pick:** Florida State +8.5 WINNER (I passed on taking the UNDER, even though it was what I interpreted as the correct total pick, and that too hit) **Model Prediction:** Clemson by 0.3 **Vegas Line:** Clemson -8.5 **Actual Margin:** Florida State by 5
+**Final Score:** Florida State 70, Clemson 65
+
+**Our Pick:** Florida State +8.5 WINNER (I passed on taking the UNDER, even though it was what I interpreted as the correct total pick, and that too hit)
+
+**Model Prediction:** Clemson by 0.3
+
+**Vegas Line:** Clemson -8.5
+
+**Actual Margin:** Florida State by 5
 
 ------------------------------------------------------------------------
 
