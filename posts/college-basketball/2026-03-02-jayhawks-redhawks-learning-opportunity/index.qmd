@@ -1,7 +1,7 @@
 ---
 title: "To look the part, Miami must learn from Kansas"
 description: "Miami University's RedHawks men's basketball team is one win away from an undefeated regular season, sparking a most remarkable phenomena in collegiate sports. The Jayhawks, on the other hand, are unimpressed."
-date: last-modified
+date: 'March 6, 2026'
 categories: [blue-bloods, meritocracy, myaamia-accords, march-madness, kansas, miami-oh]
 author: "Peter Maximilian Fortunato"
 ---
