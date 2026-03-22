@@ -1,0 +1,238 @@
+---
+title: "To look the part, Miami must learn from Kansas"
+description: "Miami University's RedHawks men's basketball team is one win away from an undefeated regular season, sparking a most remarkable phenomena in collegiate sports. The Jayhawks, on the other hand, are unimpressed."
+date: last-modified
+categories: [blue-bloods, meritocracy, myaamia-accords, march-madness, kansas, miami-oh]
+author: "Peter Maximilian Fortunato"
+---
+
+No, this is not an advert to up and leave sunny South Beach, given its existential environmental issues, for just as sunny Wichita. 
+
+Yes, the increased frequency of tornadoes, dust storms and brushfires are issues that Kansans face. However, withering natural disasters in the Great Plains means hiding away inside a sufficiently subterranean concrete bunker connected to one's domicile. The word "Kansas" literally means "people of the south wind", so the indigenous peoples knew how to stake their claim. South Beach residents aren't as lucky.
+
+This is a report on the Miami University RedHawks Men's Basketball Team and Meritocracy. Miami University has thrown the world into crisis, both within collegiate athletics as a whole and the body of students, alumni, faculty and staff who just want to enjoy something without feeling compelled to explain themselves. 
+
+Sports bettors and casual hoops fans alike are upset that at 31-1 the RedHawks had to play in Dayton as one of the "First Four" games, rather than be included in the initial Round of 64 right-off-the-bat. This is all because they played a schedule, out of the control of the players themselves, against inferior opponents, compared to, say, the Auburn Tigers. However, those who mine data and therefore know more than the Average Joe claim that Miami's strength-of-schedule is enough to classify the team as frauds. The Mid-America Conference, where Miami plays, is not good enough, they say, to have one of its members receive an at-large bid in addition to their conference champion. The Southeastern Conference, where Auburn plays, is simply more elite and should have eleven of its members invited to dance, while the poor MAC should be lucky that they were even considered in the first place.
+
+Auburn ended not receiving an invite to March Madness; instead they are playing in the NIT. Miami, as it currently stands, is still dancing.
+
+Michael Wilbon, who famously finds analytics' role in sports to be loathsome, had the following to say on his daily ESPN sports show *Pardon the Interruption* hosted with Anthony Kornheiser on their March 2nd broadcast:
+
+"And particularly with the Big Ten and the MAC, these kids all grew up together, they all basically got separated through the process of recruiting, when you're in Michigan and Ohio and Illinois and Indiana, and now you're telling me you go undefeated against whatever schedule you're allowed to cobble together, that's not good enough? Because we need a 13th-ranked team from the Big Ten? C'mon now."
+
+Not that Bruce Pearl, the former head coach at Auburn, who resigned from his job to take a higher-paying and more influential role as a college basketball TV analyst and thus has the ear of the Selection Committee, is concerned. His son is coaching the Tigers through the gauntlet that is the Southeastern Conference, which for all intents and purposes is indeed more important, and thus more attractive to more talented players, themselves more attracted to life in the South East than Mid America. 
+
+Therefore, Auburn had earned it, and Miami did not. 
+
+---
+
+To Pearl, negative fourteen is greater than zero, negative one, negative two, and negative three.
+
+The [remarkable](https://nypost.com/2026/03/01/sports/miami-ohio-deserves-march-madness-spot-regardless-of-what-bruce-pearl-says/) success for the RedHawks has turned Millett Hall into Oxford's most popular venue, surpassing Uptown as the place to be on game day. But critics, from basketball analytics experts to the Miami University Board of Trustees, think the hype that is filling up the arena is unwarranted.
+
+The college basketball experience is foreign to your correspondent, as I wish to be a student again just for the chance to have a Saturday to do something other than beat the clock at Brick Street. For the unfamiliar, Brick Street is a bar in Oxford, Ohio, where on Saturdays we'd arrive at 1:00 P.M. to purchase \$1 pitchers of either Natural "Natty" Lite or Bud Lite. At 2:00, the pitcher cost \$ 2. So you had to get there early to truly benefit from partaking in the hyperinflation ritual.
+
+My graduate school experience occurred during the autumn of 2020 and spring of 2021, so the social distancing protocols prevented me from taking my mind off of studying business analytics and data science. However, this experience meant I needed to pass ISA 601 Communicating with Data, taught by Dr. Allison Jones-Farmer. Before joining the faculty at Miami as the Van Andel Professor of Business Analytics, she directed the Auburn University Business Analytics Learning Lab as the C&E Smith Professor of Statistics and Analytics.
+
+As an exercise in data journalism, I asked her what kind of advice I should offer the Selection Committee, what kind of recommendation to make for seeding Miami and Auburn in the March Madness tournament bracket. We indeed recognize the bias that we possess, however we believe our variance in experiences make up for any over-fitting we may have committed during our modeling process. 
+
+---
+
+Before we explain ourselves, the more helpful recommendation/learning opportunity is that Miami need not pay any attention to Auburn or whatever team is 6th or worse in their respective "Power 5" conference. Rather, the wise move would be to follow the lead of the Kansas Jayhawks if the RedHawks are keen to silence the critics.
+
+Why? Well, your correspondent just so happens to be from Overland Park, a 35-minute drive from Lawrence. And his father and older brother are part of the Jayhawk alumni base. So they are the standard from which Miami should imitate.
+
+The Blue Bloods of college basketball is up for debate. But given that your correspondent has a conflict of interest, I might as well just declare them myself (in no specific order): Kansas, Duke, Kentucky, North Carolina, UCLA, Indiana, and UConn. The seventh team, the Connecticut Huskies, have won their six championships, tied with UNC for 4th-most, inside the previous 30 years, so despite their "recency bias" they have earned their button.
+
+If there is a second tier of college basketball elite, it includes all the teams that have won multiple championships: the University of Florida, Villanova University along Philadelphia's Main Line, the University of Louisville (personally, I recognize their 2013 championship, simply to honor Kevin Ware), the University of Cincinnati, Michigan State University, North Carolina State University, Oklahoma State University (known as the State Agricultural and Mechanical College of Oklahoma when they won back-to-back in the 1944-45 and 1945-46 seasons), and the University of San Francisco.
+
+The third tier are those who were the last team to cut down the nets once, except for maybe the City College of New York and their 1950 championship. When reporting on college basketball analytics with the intent of advising readers on how to best bet on performance outcomes, that story is, at best, for another time. Perhaps Junior Soprano is still lucid enough let us know why nobody was able to beat the spread. 
+
+Then there is everybody else, including Auburn and Miami of Ohio. As far as I am concerned, they are in the same league as "better" programs like Xavier, Purdue, and the University of Illinois.
+
+Of the Blue Bloods, Kansas is a better comparison for Miami to make than Indiana or Kentucky, even though those two programs are geographically close to Miami, thus Miami is in stronger competition with those schools in terms of recruitment. 
+
+Indiana is a classic Big 10 school, and Miami does everything in its power *not* to come off as a Big 10 school, so that comparison isn't useful. As for Kentucky, the rapper Action Bronson has already stated in the 2013 Mac Miller song "Red Dot Music" that he intends to fix all the games between Kentucky and Miami of Ohio. So that's not going to work either.
+
+Rather, Miami and Kansas are both institutions equal in the contributions they have made to American History.
+
+---
+
+Allen Fieldhouse is named after Phog Allen. 
+
+Among other achievements, Allen played basketball under James Naismith, the founder of the sport of basketball. As far as meritocracy is concerned, there really is nothing that compares to this.
+
+Taking a look at Allen Fieldhouse, its relationship with the campus it calls home, and how the student body that fills its seats, helps illuminate the relationship that is athletics and academics at the collegiate level. 
+
+Additionally, the University of Kansas, as an institution, offers lessons on class and civility that Auburn and Miami ought to pay attention to.
+
+The urban planning of Allen Fieldhouse is such that it is super easy for students who live on campus to attend games. It is part of an athletics facility that is centrally located among the majority of on-campus housing, making it an obvious destination for freshmen and sophomores looking for something to do.
+
+KU shows us how to plot out a campus. In addition to ensuring students have enough recreational activities, the instutition demonstrate the importance of attending university in a place like Lawrence.
+
+KU is the leading institution of higher education in the state of Kansas, with an endowment of over $1 billion. They are nicknamed the Jayhawks, abolitionist settlers from New England who rushed to the Kansas Territory to defend it from pro-slavery "Bushwackers", settlers from Missouri. They both essentially fought the first battles of the Civil War before Lincoln was even elected. [Bleeding Kansas](https://www.britannica.com/event/Bleeding-Kansas-United-States-history) *was* the Civil War before Americans realized the shitstorm they had stumbled into. 
+
+Lawrence, as the center of the abolitionist movement in the territory, had nearly all of its buildings burned to the ground by the slave driving mob, who intended to wipe the "hot-bed of abolitionists" from Kansas. The day after, the U.S. Senator from treasonous South Carolina, Preston Brooks, decided to beat his colleague from Massachusetts, Charles Sumner, within an inch of his life, on the floor of the U.S. Senate, because Sumner dared speak out against what happened the day before. The "Crimes Against Kansas" speech was just apparently too woke for the tolerant and free-thinking conservative to handle, so he had to defend himself, you see?
+
+Two days pass, and on the night of May 24, 1856, John Brown and his associates eliminated the position of pro-slavery occupiers at Pottawatomie Creek. For his courageous efforts defending Kansas, John Brown is immortalized inside the Capitol in Topeka. It took four more years of conflict and negotiation before the Wyandotte Constitution was ratified, ensuring Kansas entered as a free state. The Union saw Kansas become its final member on January 29, 1861, just before the whole American Experiment fractured.
+
+The University of Kansas rests upon a foundation of freedom and self-determination unlike most other institutions of higher learning. No matter what one studies at KU, everyone graduates with a minor in history. And if you are a student who wishes to have a long and fulfilling career in the humanities, KU, despite its size as the largest university in the state, is well positioned to offer an edge most institutions could only dream of. Your correspondent knows this because his father, who has a Masters in history from KU, was the brainchild of the [Applied Humanities Boot Camp](https://news.ku.edu/news/article/2018/02/15/campus-community-mourns-ku-history-project-creator) at the Hall Center for Humanities (its location less than 1,000 feet from Allen Fieldhouse). 
+
+If you want to go into national politics, there are plenty of resources available at the Robert J. Dole Institute of Politics, named after former Senate Majority Leader and "Mr. Republican" Bob Dole. Your correspondent attended a special Youth Civic Leadership Institute there while a rising senior in the year 2015. If, instead, you are more passionate about improving your local community, KU is [number 1](https://spaa.ku.edu/news/article/2024/04/10/ku-1-latest-local-government-management-mpa-program-rankings) when it comes to local government management and public affairs.
+
+This is all to say that, yes, the founder of basketball and his most important prodigy got there start at Kansas. However, it's not simply the fact that the Titans of Basketball decided to call Lawrence home, it's that there was already a foundation sturdy enough upon which to build. 
+
+---
+
+Leading up to August 23, 1863, Confederate William Quantrill camped with his traitorous band of savages atop a ridge that formed the water divide between the Kansas and Wakarusa Rivers. It was known as "The Hill" by European settlers travelling along the Oregon Trail during the preceding decades. It was the next big topographical challenge they had to overcome in order to carry on westward. 
+
+To your correspondent, it signified the moment, as a young child, I knew we were getting close to seeing Dad at his loft apartment where he stayed during his graduate school experience.
+
+From The Hill, Quantrill descended down into the center of abolitionism in Kansas (i.e., the center of abolitionism for everywhere west of the Mississippi River) with the intent to commit war crimes, which became known as the Lawrence Massacre.
+
+Here is a quote from the Oklahoma Historical Society:
+
+"William Clarke Quantrill (1837–65) earned infamy during the Civil War for his atrocities against citizens and guerrilla warfare against Union soldiers. 
+
+He served the Confederacy and perhaps hoped to secure high rank and recognition from its leaders. But Quantrill's activities indicated that he fought for plunder and personal revenge rather than from any commitment to the South. 
+
+Born in Ohio, Quantrill headed to Kansas Territory at age eighteen and became embroiled in hostilities between free-state and slave-state forces. At that early date Quantrill easily changed sides, his sole concern being pillage."
+
+Almost exactly six months prior to Quantrill's Raid, Kansas' legislature was busy allocating funds bestowed by the Federal Government provisions to establish a land-grant institution. Originally, in 1861, the legislature approved a bill that would establish the state university in Manhattan, Kansas. However, it was vetoed by Governor Charles Robinson, an eyewitness to the Raid.
+
+By February 1863, the legislature finally came to an agreement by which Manhattan would be the site of the state's land-grand institution. The legislation distinguished the institution in Manhattan from the "state university", which would be established in Lawrence. Governor Thomas Carney signed it into law. The site where Quantrill organized his raid was chosen as the founding location for the university.
+
+On March 1, 1864, the University of Kansas was chartered atop Mount Oread.
+
+---
+
+Phog Allen, James Naismith, and countless Kansas political and community leaders are indeed titans of history. Miami,too, has their own titans of history, such as William Holmes McGuffey, Robert Frost, and Freedom Summer volunteers James Chaney, Andrew Goodman and Michael Schwerner.  
+
+Miami University has Millett Hall, which serves its purpose. It is a modest arena for a modest town. Its tucked away, not at the center of many residence halls but is surrounded by one of Oxford's largest parking lots. My freshman year, I stayed in Emerson Hall, at the complete opposite and sothern end of the campus, so it was a pain for me to get up there (*pain* in the sense that I had to be really motivated to walk 30 min one way to a location that is not near Uptown or really any of my classes). But, like, at least it was always a pleasant stroll.
+
+Oxford has a population of around 20,000, while Lawrence is nearly five times that. Allen Fieldhouse is also located such that traffic in and out of the arena can flow relatively smoothly, because the students attending the games only need to trek a distance of less than 1000 feet from their dorms...
+
+Oxford is only accessible by two-lane roads. For reference Lawrence has Interstate 70 that runs along the north of the city and takes motorists directly east to Kansas City and west to Topeka, Salina, Denver, and ultimately Los Angeles (70 doesn't go that far but the planners intended to route the interstate in such a way that its western terminus forms a junction with Interstate 15 two-and-a-half hours south of Salt Lake City so that motorists can have a direct route through to Las Vegas and Southern California). Additionally, the fully controlled-access State Highway K-10 connects directly with the beltway Interstate 435 that connects seamlessly with the southern suburbs of Kansas City in Johnson County, KS, Jackson County, MO and Cass County, MO. Finally, there is the fully controlled-access U.S. Highway 75 that links up with Interstate 35 and takes motorists south to Emporia and Wichita.
+
+Lawrence has the transportation network available to them if they wanted to build a super fancy arena district with hotels and restaurants. But why would they do that? It takes 30 minutes without traffic to arrive in the Power & Light District and host home games at the T-Mobile Center in downtown Kansas City, should they need more hotels and restaurants to cater to the immense alumni base that watches Jayhawk basketball.
+
+Why does Miami want to turn Cook Field into Choke Field? Why does Miami want something that will choke its community? There are no roads available to make feasible the proposed [arena district](https://miamioh.edu/news/2026/02/new-multipurpose-arena-approved-by-miami-board-of-trustees.html). From the tone of this press release, it appears they intend to open up the Karoline Leavitt School of Communications. 
+
+I promise you, there simply was not a "Miami RedHawks Basketball Fan", before this season at least, in any sort of capacity, like there exists a "Kansas Jayhawks Basketball Fan". 
+
+Consequently, there is simply no room for this kind of arena district *anywhere* in Oxford. 
+
+In choosing Cook Field as the site, the Miami University Board of Trustees (eleven members of which are appointed by the Republican Governor and Miami Alum Mike DeWine) declares its assumption that the community it serves is too stupid to realize that this is a bad idea. Your correspondent's former professor, Dr. David Prytherch, has [written](https://www.cincinnati.com/story/opinion/contributors/2026/02/26/miami-university-must-pause-before-betting-on-a-new-arena/88823094007/) ad nauseum about this subject. He is right, the university will lose its soul if it carries on this wayward course of action.
+
+I'm not here to expand upon the tireless work done by Dr. Prytherch and student activists to get the message out that Miami is abusing trust. However, I still feel compelled to express my deep sadness for the developments taking place at Cook Field.
+
+Therefore, I shall color this moment with a deep personal narrative.
+
+---
+
+[Kenneth Armitage](https://obituaries.ljworld.com/us/obituaries/ljworld/name/kenneth-armitage-obituary?id=32176557) was an Ohio native who also ventured to Kansas, but to do the exact opposite of William Quantrill.
+
+I don't remember when I first met Ken, but there's a good chance it occurred before 9/11, which means it was likely before my 4th birthday. My parents, Ken, and Ken's wife Katie were dear friends. "Ken 'n Katie" functioned somewhat like a third pair of grandparents to me. I remember celebrating my 17th birthday at their house on Ohio Street, sitting just above the banks of the Kansas River, where Katie baked me an Apple Crisp as an homage to her Texas heritage.
+
+My father enrolled in the KU History Masters' program less than two years after realizing the job opportunity in Overland Park that he moved his entire family for turned out not to be what he thought. Over a thousand miles from home, Henry could have returned to his former life in Washington, D.C., but he decided that he could not give up the opportunity to learn and promote Kansas history. He enrolled at KU, and in the first semester of his program, he became acquainted with Kenneth's son, Kevin.
+
+Henry Fortunato, the son of first generation Americans and the grandson of four Italian immigrants, matriculated as a freshman at Georgetown University in their School of Foreign Service less than a month after Richard Nixon resigned. Almost immediately, he became enthralled by the lectures and teachings of his professor, [Dr. Jan Karski](https://www.yadvashem.org/righteous/stories/karski.html). Karksi, as a Catholic Polish spy, traveled numerous times between occupied Poland and London to report on the conditions of the concentration camps. He most famously breifed Franklin D. Roosevelt in the White House about what he saw. FDR promptly ignored him.
+
+Fortunato was so inspired that after he graduated and gained employment with the Georgetown University communications office, he convinced Karksi that the world needed to know his story, and Karksi agreed to give an interview to *Washington Post* journalist Henry Mitchell. 
+
+Mitchell's 1979 interview of Karksi was published in both the *Post* as well as the *International Herald-Tribune*, an English-language newspaper that was head-quartered in Paris and co-owned by the *Post* and *New York Times*. French filmmaker Claud Lanzmann, editor of the existentialist periodical *Les Temps Modernes*, happened to be researching for his upcoming Holocaust documentary *Shoah* when he stumbled upon Karksi's interview.
+
+Lanzmann read Mitchell's introduction:
+
+"The world turned upside down in half an hour at dawn, but Jan Karski had no idea then that he was approaching the day of the broken teeth, the slashed wrists, the naked leap from the window, the cyanide pill and the desperate reach for the confessional.
+
+'The war just stopped for me in half an hour,' he said when I dropped by his elegant house to visit him. "Then instead of war, all I saw was cows and confusion.'"
+
+What Karski meant to say was "chaos and confusion", which Mitchell misheard but printed it anyway. 
+
+Lanzmann filmed an interview with Karski and included it in as the final half-hour of the nine-hour long documentary, and the rest is history.
+
+In order for Henry Fortunato to midwife Karksi's story, he had to get the approval of Karski's boss at the time, School of Foreign Service Dean Peter F. Krogh. It just so happened that Peter Krogh's executive assistant, fellow SFS graduate Eileen O'Hara, was the person Fortunato needed to impress in order to get a meeting with Krogh, which was indeed a successful effort. Feeling confident in himself, Fortunato decided to then also ask out O'Hara on a date.
+
+Eighteen years after Mitchell's interview with Karski, and six weeks after Fortunato moved his family to Kansas (the same date Princess Diana died), your correspondent, Peter Maximilian Fortunato, was born.
+
+---
+
+Two years after the birth of his second son (the first member in both the Fortunato and O'Hara families born west of the Mississippi River), the Armitage Family and the Fortunato-O'Hara Family quickly bonded. I presume this because, as classmates, Kevin and Henry shared a deep conviction to tell stories.
+
+Fast-forward to the 2015-2016 school year, the 18-year-old son of Fortunato is ready to go off to college. He appreciates all of the work his father has done to tell the history of Kansas, and he recognizes that enrolling at the University of Kansas means pretty much any resource is available to him if he asks. But he decides to venture away from home to build something on his own, and he discovers that Miami could offer him the kind of residence he was looking for.
+
+It was far enough from home such that Peter was the only student from his graduating class to attend Miami. Yet, it was still in the Midwest, and Peter had a family connection. Kevin Armitage, the individual who facilitated the meeting between Henry and Lawrence community leaders in an effort to launch the first of its kind [KU History Website](https://www2.ljworld.com/news/2002/apr/28/new_web_site_to/) in 2002, taught at Miami. So I would be looked after by a trusted individual.
+
+---
+
+On January 7, 2018, one day before his 62nd birthday, Henry, suffering from late-stage lung cancer, organizes his (pre-funeral)[https://www.kcur.org/arts-life/2018-02-06/henry-fortunato-who-revolutionized-kansas-city-library-events-and-area-walking-trails-dies-at-62] funeral at the Kansas City Public Library-Country Club Plaza Branch. I was 20 and a sophomore at Miami at the time. It was a beautiful celebration of life where Kansas City leaders thanked my father for his service to the community, and where my little sister sang a beautiful rendition of "Come On Eileen".
+
+On February 5, 2018, Henry Fortunato passes away at home; I woke up that day in my dorm inside Hillcrest Hall, on the Western Campus, and fell asleep at home in Kansas.
+
+On May 30, 2018, [Kevin Armitage](https://www.justice.gov/usao-wdmo/pr/former-university-professor-sentenced-traveling-missouri-sex-minor) was arrested in a restaurant called Winstead's in the Country Club Plaza of Kansas City, Missouri for attempting to solicit services from what he thought was a 14-year-old prostitute.
+
+Winstead's is visible from the atrium of the Plaza Library's auditorium. I've recorded countless memories with friends, both at that particular location as well as others, drinking milkshakes, eating steakburgers, and wondering what it must've been like to be a teenager in the 1950's. I cannot imagine my childhood home without thinking about Winstead's.
+
+I remember vividly when the news broke in June. I was interning in New York City at the time, living with my mom's brother in Jersey City and working in Manhattan, struggling to find a sense of normalcy given that Dad had just died. I had taken the opportunity to travel out to Long Island, where Dad is from, to visit my godmother and Dad's closest cousin. Minding my own business while riding the Long Island Rail Road out to Massapequa Park, I receive a notification from my Delta Chi fraternity group chat regarding the sacking of a Miami professor...
+
+---
+
+I write this narrative with one person in particular: Miami University President Gregory Crawford.
+
+It appears that Crawford signed a [letter](https://www.daytondailynews.com/news/crime--law/miami-university-professor-arrested-teen-sex-sting-previously-punished-school/4a6wPE0rETMMnUAEtg7FII/) dated December 12, 2016. Crawford declared "This type of behavior must not occur again. It is imperative that you maintain appropriate faculty standards. Failure to do so may result in additional disciplinary action up to and including termination."
+
+President Crawford made the classic and reckless error of not believing in a credible threat.
+
+As Maya Angelou said: "When someone shows you who they are, believe them the first time."
+
+Sometime during the fall semester of 2016, my father, mother and I are walking around Uptown and we run into Gregory and his family in front of Skyline. I don't remember his daughter's name, but I believe she was also a freshman in college that year. The exchange we had was, and it encouraged my family and I that I was in the right place.
+
+During the fall semester of 2017, Kevin and I would meet for dinner at Mac 'n Joe's so that Kevin could console me about my dying father.
+
+I write this narrative as way to echo not just my greatest influences (my father, Ken, Jan, James and Phog) but also to emphasize the importance of trusting people's actions rather than words. Dr. Crawford chose to misrepresent Miami to me, and he continues to misrepresent Miami to the world.
+
+---
+
+Dr. Crawford, you are in a position to protect and serve. Even though you failed me, that mustn't mean you continue to fail future Miami students. 
+
+I am no stranger to institutional failure, and that is highlighted by the fact that as a Roman Catholic, I am confirmed with the name [Maximilian](https://www.vaticanstate.va/en/state-and-government/general-informations/saint-of-the-day/2485-august-14-saint-maximilian-maria-kolbe-martyr.html). Both Saint Maximilian and Dad share the same birthday, January 8.
+
+There is still time to cancel the atrocities you and your colleagues plan to commit against the Miami Community.
+
+You are *not* in a position to impose.
+
+It's time to think more like Jan Karski and Ken Armitage and less like William Quantrill and Donald Trump. I know that you are intelligent, and you refuse to reduce yourself to making arguments like Bruce Pearl.
+
+Cook Field is not the place for you to hold court, nor is it your place to punish the Miami Community with your allusions of grandeur. The arena district plans look like they were inspired by Jared Kushner's "Gaza Riviera" or "Alborz Aspen". The accomplishments of the RedHawks basketball team *do not belong to you*. 
+
+Do not let your actions of deceit define your legacy.
+
+---
+
+Final Recommendation: Sign the Myaamia Accords
+
+Setting: William C. Wilkes Carriage House, Hamilton, Ohio
+
+As of now, CBS' Bracketology has Kansas as a 4 seed in the East, Miami as a 12 seed in the Midwest, and Auburn as one of the First 4 Out. With less than two weeks of College Basketball before Selection Sunday, here is how Dr. Farmer and I believe meritocracy, both for Miami University in the macro sense (college basketball world) and the micro sense (the very community that keeps it alive) can be meted out, thus putting to rest this frankly ridiculous controversy.
+
+Kansas, Miami and Auburn all receive invites regardless of whether they win the respective Big XII, MAC or SEC tournaments. All three teams get placed in the same region. Miami receives a 4, Kansas receives a 5, and Auburn a 13. Therefore, Miami and Auburn play each other in the first round, and should Miami and Kansas win in the first round, they would then play each other in the second round.
+
+St. Louis, Missouri plays host to first and second round games for the Midwest region, making it the most optimal location between Oxford, Lawrence and Auburn, Alabama. It represents the obvious middle ground, the place that will make the most people happy.
+
+Millett Hall remains the home of Miami RedHawks basketball.
+
+Cook Field continues to be one the many public squares available to the Miami Community. 
+
+Why call it the Myaamia Accords? The Myaamia Tribe is not just the namesake of Miami University. The Myaamia refer to themselves as the "Downstream People". The Wilkes Carriage House sits on the banks of the Great Miami River, downstream of Dayton. 
+
+It is clear to the Miami Community and the world that Crawford, Pearl and Trump have forgotten the crimes against Bosnia, the crimes against Kansas, and the crimes against Poland. It is perhaps time for a proper history lesson.
+
+It is clear to the Miami Community that the forces that be prefer bad peace over good war. I propose a different accord: Good peace is better than any war.
+
+If you need a symbol to remind you of your unwavering commitment and loyalty to your students, your faculty, your staff, and your Community, Dr. Crawford, I suggest you learn from the state of the sunflower.
+
+---
+
+*Peter Maximilian Fortunato is a graduate of Miami University's College of Liberal Arts and Farmer School of Business*
+
