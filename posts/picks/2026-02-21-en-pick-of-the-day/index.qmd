@@ -1,7 +1,7 @@
 ---
 title: "Pick of the Day: 21 February 2026"
 description: "Florida State Seminoles @ Clemson Tigers"
-date: last-modified
+date: "February 21, 2026"
 categories: [college-basketball, deep-dive, florida-state, clemson]
 author: "ProPlotFits"
 ---
