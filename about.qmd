@@ -1,191 +1,23 @@
 ---
-title: "About ProPlotFits"
-subtitle: "Building Better Betting Tools Through Data Science"
+title: "About"
+subtitle: "Peter Fortunato · Kansas City"
+format:
+  html:
+    toc: false
 ---
 
-::: {.callout-note}
-## A Solplots Enterprise
-ProPlotFits is part of the [Solplots](https://solplots.com) family of data analytics products.
-:::
+I grew up in Overland Park, Kansas, which puts me squarely in the middle of the country and, depending on who you ask, squarely in the middle of nowhere. I have spent most of my life proving that wrong.
 
----
+I am a data scientist by training and profession, with a graduate background in business analytics from Miami University. I work in R — tidyverse, ggplot2, Quarto — and I believe that a well-made chart is one of the most persuasive things a person can put in front of another person.
 
-## The Project
+I also speak Spanish, have written about Mexico-KC relations for the International Relations Council of Kansas City, and have cared about the Royals since before Salvador Pérez arrived in 2011 and made it easier to care about them.
 
-ProPlotFits is an open-source NCAA basketball analytics platform that combines machine learning with sports betting intelligence. We're building tools to help bettors make smarter, data-driven decisions.
+ProPlotFits is the place where those things converge. It is a sports analytics blog that moves between English and Spanish, takes the data seriously, and treats KC as the cosmopolitan city it actually is rather than the flyover stereotype it gets assigned from the coasts.
 
-**Mission:** Democratize access to high-quality sports analytics and betting insights.
-
-**Approach:** Transparent, reproducible, continuously improving models.
-
-**Status:** Public beta (January 2026)
+The Latino community in this metro is large, growing, and underserved by sports media. This site is an attempt to fix a small corner of that.
 
 ---
 
-## Why "ProPlotFits"?
+All analysis is done in R. Code is published alongside every post. If something is wrong, say so — the methodology improves when it gets challenged.
 
-The name combines:
-
-- **Pro** - Professional-grade analytics
-- **Plot** - Data visualization and statistical modeling  
-- **Fits** - Model fitting and predictions
-
-Plus, it sounds like "profits" 😉
-
----
-
-## The Team
-
-ProPlotFits is built and maintained by sports analytics enthusiasts who believe in:
-
-- **Open source development** - All code is public on GitHub (coming)
-- **Transparent methodology** - No black boxes
-- **Responsible betting education** - Data-driven, not emotion-driven
-- **Continuous improvement** - Models evolve with feedback
-
----
-
-## Technology Stack
-
-**Data Collection:**
-
-- [hoopR](https://github.com/sportsdataverse/hoopR) - NCAA basketball data
-- [The Odds API](https://the-odds-api.com/) - Real-time sportsbook odds
-- KenPom.com - Advanced metrics (v2.0)
-
-**Modeling:**
-
-- R (data processing, modeling)
-- tidyverse, caret, randomForest, gbm
-- Python (future deep learning experiments)
-
-**Website:**
-
-- [Quarto](https://quarto.org/) - Publishing system
-- GitHub Pages - Free hosting
-- Fully reproducible builds
-
----
-
-## Development Roadmap
-
-### Phase 1: Beta Launch ✅ (January 2026)
-
-- [x] Build data pipeline
-- [x] Train initial models (GBM, RF, GLM)
-- [x] Multi-sportsbook odds integration
-- [x] Launch website with daily picks
-- [ ] Track live performance (ongoing)
-
-### Phase 2: Enhancement (February-March 2026)
-
-- [ ] Integrate KenPom adjusted metrics
-- [ ] Add injury data scraping
-- [ ] Build performance dashboard
-- [ ] Test XGBoost and neural network models
-- [ ] Implement Spanish translations
-
-### Phase 3: Community Growth (Spring 2026)
-
-- [ ] User accounts and tracking
-- [ ] Social betting insights
-- [ ] Discord community
-- [ ] API for developers
-- [ ] Mobile app
-
----
-
-## Open Source
-
-**GitHub Repository:** 
-Coming Soon
-
-All code, models, and data pipelines are open source under MIT License.
-
-**Contributions welcome:**
-
-- Model improvements
-- Feature suggestions  
-- Bug reports
-- Documentation
-- Spanish translations
-
-Check out our [Issues page](https://github.com/yourusername/proplotfits/issues) to get involved!
-
----
-
-## Philosophy
-
-### Why We're Different
-
-**1. Transparency Over Hype**
-
-We show you exactly how our models work, what they're good at, and where they fail. No "secret sauce" or inflated win rates.
-
-**2. Education Over Gambling**
-
-We want you to understand sports analytics, not just blindly follow picks. Learn how to think about betting value.
-
-**3. Long-Term Edge Over Short-Term Results**
-
-Any model can get lucky for a few games. We focus on process and edge, not flashy win streaks.
-
-**4. Community Over Competition**
-
-Sports betting is not zero-sum between bettors. We're all fighting the vig, not each other. Let's share knowledge.
-
----
-
-## Disclaimer
-
-**ProPlotFits is a research and educational project.**
-
-- We are **not** a licensed gambling service
-- We do **not** accept payments for picks
-- We do **not** guarantee profits
-- We **strongly encourage** responsible betting
-
-**Sports betting involves risk.** Only bet what you can afford to lose.
-
-If you or someone you know has a gambling problem, please seek help:
-
-- **National Council on Problem Gambling:** 1-800-522-4700
-- **Gamblers Anonymous:** [gamblersanonymous.org](https://www.gamblersanonymous.org/)
-
----
-
-## Contact & Feedback
-
-**Questions?** [Open a GitHub Issue](https://github.com/yourusername/proplotfits/issues)
-
-**Found a bug?** [Report it on GitHub](https://github.com/yourusername/proplotfits/issues/new)
-
-**Want to contribute?** [Check our Contributing Guide](https://github.com/yourusername/proplotfits/blob/main/CONTRIBUTING.md)
-
-**Business inquiries?** Email: [contact@proplotfits.com](mailto:contact@proplotfits.com)
-
----
-
-## Acknowledgments
-
-**Data Sources:**
-
-- [ESPN](https://www.espn.com/) (via hoopR)
-- [KenPom.com](https://kenpom.com/) (subscription required)
-- [The Odds API](https://the-odds-api.com/)
-
-**Inspiration:**
-
-- The sports analytics community on Twitter/X
-- FiveThirtyEight's sports modeling approach
-- The open source R community
-
-**Special Thanks:**
-
-- hoopR developers for making college basketball data accessible
-- Beta testers providing early feedback
-- Everyone who contributes to making sports analytics more transparent
-
----
-
-*Last updated: January 3, 2026*
+*ProPlotFits is part of the [Solplots](https://solplots.com) family of data projects.*

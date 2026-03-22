@@ -1,1 +1,88 @@
-/* css styles */
+/*-- scss:rules --*/
+
+/* ProPlotFits — Royal Blue theme */
+/* Royals palette: Royal Blue #174B8B, Gold #C09A5B, Light Blue #D6E4F5 */
+
+/* Navbar */
+.navbar {
+  background-color: #174B8B !important;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #C09A5B !important;
+}
+
+/* Headings */
+h1, h2, h3 {
+  color: #174B8B;
+}
+
+/* Links */
+a {
+  color: #174B8B;
+}
+
+a:hover {
+  color: #C09A5B;
+}
+
+/* Primary buttons */
+.btn-primary {
+  background-color: #174B8B;
+  border-color: #174B8B;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #C09A5B;
+  border-color: #C09A5B;
+  color: #ffffff;
+}
+
+/* Footer */
+.nav-footer {
+  background-color: #174B8B;
+  color: #ffffff;
+}
+
+.nav-footer a {
+  color: #C09A5B;
+}
+
+.nav-footer a:hover {
+  color: #ffffff;
+}
+
+/* Post listing — category badges */
+.quarto-category {
+  background-color: #D6E4F5;
+  color: #174B8B;
+  border: none;
+}
+
+/* Inline code */
+code {
+  color: #174B8B;
+  background-color: #D6E4F5;
+}
+
+/* Horizontal rules */
+hr {
+  border-color: #C09A5B;
+  opacity: 0.4;
+}
+
+/* TOC active link */
+#TOC a.active {
+  color: #174B8B;
+  font-weight: 500;
+}
+
+#TOC a:hover {
+  color: #C09A5B;
+}

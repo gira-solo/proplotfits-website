@@ -8,7 +8,7 @@ author: "ProPlotFits"
 
 ## Recap
 
-Yesterday, I [shared](https://proplotfits.com/posts/college-basketball/2026-02-21-en-pick-of-the-day/) the very first pick and deep dive analysis for ProPlotFits.
+On February 21 of this year, I [shared](https://proplotfits.com/posts/college-basketball/2026-02-21-en-pick-of-the-day/) the very first pick and deep dive analysis for ProPlotFits.
 
 We identified that the game between Florida State and Clemson as having a "very high" confidence play despite the fact that our model projected a draw (Clemson by 0.3). FSU secured a tough road win at Clemson, 70-65, covering by 13.5 points.
 

@@ -1,5 +1,5 @@
 ---
-title: "Metrics & Analytics"
+title: "Posts"
 listing:
   contents: 
     - "posts/**/index.qmd"
@@ -11,4 +11,4 @@ listing:
 page-layout: full
 ---
 
-College Basketball, MLB, and other insights.
+College basketball, MLB, and other insights.

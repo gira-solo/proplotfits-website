@@ -1,65 +1,29 @@
 ---
 title: "ProPlotFits"
-subtitle: "Beta testing responsible data driven analyses"
+subtitle: "Sports analytics, en dos lenguas — from Kansas City"
 format:
   html:
     toc: false
 ---
 
-::: {.hero-banner}
-# Welcome to ProPlotFits
+ProPlotFits is my personal project on data journalism, rooted in Kansas City, and demonstrative of my bilingual capabilities.
 
-## Smart NCAA Basketball Picks, Powered by Advanced Analytics
+Two things I enjoy are communicating data and speaking Spanish, so why not combine them? I'm here to improve my Spanish through data communication, so not everything you see in Spanish will be "sin errores", sin embargo, I shall try my best.
 
-We analyze 350+ Division I teams daily, combining real-time statistics with proven predictive models to identify high-value betting opportunities.
+The blog highlights the fact that the Heartland does in fact have a large Spanish-speaking community, and as one of the capitals of the Heartland, Kansas City is therefore a cultural center for Spanish-speakers
 
-[View Today's Picks](picks-en.qmd){.btn .btn-primary .btn-lg}
-:::
+The site moves between English and Spanish the way a bilingual conversation actually does — just spoken.
 
----
-
-## 🎯 What We Offer
-
-::: {.grid}
-::: {.g-col-4}
-### Daily Predictions
-Fresh picks every game day with spread, total, and moneyline predictions for all D-I matchups.
-:::
-
-::: {.g-col-4}
-### Value Detection
-Our models identify where Vegas lines differ from our projections by 3+ points (spreads) or 5+ points (totals).
-:::
-
-::: {.g-col-4}
-### Multi-Sportsbook Coverage
-Compare odds across DraftKings, FanDuel, and BetMGM to find the best lines.
-:::
-:::
+This blog is somewhat epistolary, with Salvador Pérez as the intended target. He is bilingual, proud of where he came from, proud of where he plays, and deeply tied to his geography.
 
 ---
 
-## 📊 Our Edge
+**Plot** — every post ships with a real chart, model, or dataset. We show our work.
 
-ProPlotFits combines:
+**Cultura** — the Latino community in KC is large, passionate, and largely ignored by mainstream sports media. This site is made for them and about them.
 
-- **Rolling performance metrics** (L3, L5 games) 
-- **Four Factors analysis** (eFG%, TOV%, ORB%, FT Rate)
-- **Pace-adjusted efficiency ratings**
-- **KenPom adjusted metrics** (coming soon in v2.0)
-- **Machine learning models** trained on 2+ seasons of data
-
-Our Gradient Boosting (spreads), Random Forest (totals), and Logistic Regression (win probability) models are backtested and validated against historical performance.
+**Código** — Spanglish is the voice, not a barrier.
 
 ---
 
-## ⚠️ Beta Launch Notice
-
-**ProPlotFits is currently in beta testing (January 2026).**
-
-- Models are being refined daily
-- Historical performance tracking begins this month
-- User feedback is actively shaping our roadmap
-- Free access during beta period
-
-**This is not financial advice.** Sports betting involves risk. Please bet respons
+[Read the posts](posts.qmd){.btn .btn-primary}

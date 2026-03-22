@@ -9,30 +9,30 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Metrics & Analytics"
+      - text: "Posts"
         href: posts.qmd
-      - text: "Methodology"
-        href: methodology.qmd
       - text: "About"
         href: about.qmd
     right:
       - icon: github
-        href: https://github.com/yourusername/proplotfits
-        
+        href: https://github.com/gira-solo/proplotfits-website
+
   page-footer:
     left: "© 2026 ProPlotFits"
-    right: 
-      - text: "Methodology"
-        href: methodology.qmd
+    right:
+      - text: "About"
+        href: about.qmd
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme:
+      - cosmo
+      - styles.css
+    primary-color: "#174B8B"
     toc: true
     toc-depth: 3
     code-fold: true
     code-tools: false
-    
+
 execute:
   freeze: auto
