@@ -1,7 +1,9 @@
-# ProPlotFits — An Open Letter to Salvy
-
-*Querido Salvador. Un nativo de KC te habla.*
-
+---
+title: "ProPlotFits - An open letter to Salvy"
+description: "Querido Salvador, Un Nativo de KC te habla"
+date: last-modified
+categories: [royals, salvador-perez, beisbol, sabermetrics, census]
+author: "Peter Fortunato"
 ---
 
 ## Querido Salvy
