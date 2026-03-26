@@ -1,0 +1,201 @@
+---
+title: "Salvy by the Numbers"
+description: "Cada lanzamiento que vio en 2025"
+date: "March 26, 2026"
+categories: [royals, salvador-perez, béisbol, sabermetrics]
+author: "Peter Fortunato"
+---
+
+Para **ProPlotFits** tenemos que explicar en tres lenguas (inglés, español, y R) los datos de [Baseball Savant](https://baseballsavant.mlb.com/savant-player/salvador-perez-521692?stats=statcast-r-hitting-mlb). Es un reto muy alta para mi, un analísta estadounidense desde Kansas. Es decir, seguimos.
+
+Salvy tiene su propio perfil, como todos los jugadores. Sin embargo, quiero demonstrar alguna manera de analizar datos por programación. Podemos simplificar los datos para todos aquí. 
+
+---
+
+## Los Datos
+
+Se llama "Baseball Savant" porque el sitio es un eriduto de datos: cada lanzamiento es registrado, también su velocidad, su ángulo de lanzamiento de la bola desde el bate, su trayectoria, y muchos más.
+
+Para descargar todos los lanazamientos los que vio por Salvador Pérez en 2025, 1618 en total, corremos la siguiento pieza de código:
+
+
+```{r}
+library(tidyverse)
+
+salvy_2025 <- read_csv("https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfSea=2025%7C&player_type=batter&batters_lookup%5B%5D=664728&type=details&game_date_gt=2025-03-01&game_date_lt=2025-09-30")
+```
+
+Dentro el URL podemos ver el ID de jugador para Salvy: `664728`. Puedes reemplezarlo con el ID de otro jugador y vas a descargar sus estadísticas.
+
+---
+
+## Velosalida y Lanzángulo
+
+Hace diez años que los Royals ganaron la Serie Mundial, en 2015. Este Octubre pasó durante mi último año de escuala secundaria. Desde entonces, he graduado con un Masters' de analíticas empresariales, y también he trabajado para una agencia de transporte regional, una firma de ingenería, y una firma de FinTech. 
+
+Ahora mismo estoy aprendiendo la importancia de **velocidad de salida** y **lanzamiento de ángulo**. Entiendo que hay vocabulario en español las termas de béisbol, por ejemplo, un *lanzamiento* es un "pitch" en inglés. 
+
+¿Pero existen termas para estas **nuevas** termas? No sé, sin embargo, podemos decir **velosalida** y **lanzángulo**. Por que toda la gente quiere saber: ¿qué tan fuerte golpeaste la bola; y cuánto la lanzaste?
+
+Velosalida mide lo fuerte que la bola salió, y es una medida en millas por hora. Lanzángulo, sin embargo, nos cuenta la historia del resultado después de salió el bate: el fly es más de 0 degrados, un batazo de línea paralela al suelo es 0 degrados, y un bola de piso es menos de 0 degrados. 
+
+Seguimos viendo los lanzamientos de Salvador Pérez en 2015. Podemos correr la sigiuente para comparar su Velosalida y Lanzángulo
+
+
+```{r}
+# empezamos con la trama de datos, cada fila es un lanzamiento
+salvy_2025 %>%
+# eliminar los NA's para velosalida (launch_speed) y lanzángulo (launch_angle)
+  filter(!is.na(launch_speed), !is.na(launch_angle)) %>%
+# queremos mutar una nueva columna que condense todos los eventos que se refieren a un "out"
+  mutate(outcome = case_when(
+    events == "home_run"       ~ "Jonrón",
+    events == "single"         ~ "Sencillo",
+    events == "double"         ~ "Doble",
+    events == "triple"         ~ "Triple",
+    events %in% c("field_out", "force_out", "grounded_into_double_play",
+                  "double_play", "fielders_choice_out") ~ "Out",
+    TRUE ~ NA_character_
+  )) %>%
+# solo queremos bateos y outs
+  filter(!is.na(outcome)) %>%
+
+# para nuestra plot, queremos poner lanzángulo por el eje X, y velosalida por el eje Y
+  ggplot(aes(x = launch_angle, y = launch_speed, color = outcome)) +
+  geom_point(alpha = 0.7, size = 2.5) +
+  scale_color_manual(values = c(
+    "Jonrón" = "#174B8B",
+    "Doble"   = "#4A7FC1",
+    "Triple"   = "#8AADD4",
+    "Sencillo"   = "#C09A5B",
+    "Out"      = "#CCCCCC"
+  )) +
+  labs(
+    title   = "Salvador Pérez — calidad de contacto, 2025",
+    x       = "Lanzángulo (degrados)",
+    y       = "Velosalida (mph)",
+    color   = NULL,
+    caption = "Fuente: Baseball Savant · ProPlotFits"
+  ) +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title      = element_text(size = 16, face = "bold", color = "#174B8B"),
+    plot.caption    = element_text(size = 8, color = "#888888"),
+    legend.position = "top"
+  )
+```
+
+---
+
+## Destacando el "Sweet Spot" de Salvy
+
+Como analístas, nuestro objetivo de comunicar datos a los accionistas (Salvy, los otros bateadores de los Royals, y sus entrenadores) es hacer que las conclusiones sean evidentes. 
+
+Para encontrar la mitad de velosalida de Salvy, ejecute el siguiente código:
+
+```{r}
+avg_ev <- 
+  # empezar con trama de datos original
+  salvy_2025 %>%
+  # eliminar NA's
+  filter(!is.na(launch_speed)) %>%
+  # resumir la mitad de velosalida
+  summarise(mean_ev = mean(launch_speed)) %>%
+  # destacar la mitad en su proprio objeto programático
+  pull(mean_ev)
+```
+
+La mitad de velosalida de Salvy en 2025 fue **`r round(avg_ev, 1)` mph**. Ahorita, queremos destacar el "sweet spot" entre velosalida y lanzángulo con la siguiente:
+
+```{r}
+salvy_2025 %>%
+  filter(!is.na(launch_speed), !is.na(launch_angle)) %>%
+  mutate(outcome = case_when(
+    events == "home_run"       ~ "Home run",
+    events == "single"         ~ "Single",
+    events == "double"         ~ "Double",
+    events == "triple"         ~ "Triple",
+    events %in% c("field_out", "force_out", "grounded_into_double_play",
+                  "double_play", "fielders_choice_out") ~ "Out",
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(outcome)) %>%
+  ggplot(aes(x = launch_angle, y = launch_speed, color = outcome)) +
+  annotate("rect",
+    xmin = 8, xmax = 32, ymin = 95, ymax = Inf,
+    fill = "#174B8B", alpha = 0.08
+  ) +
+  annotate("text",
+    x = 20, y = 117, label = "campo dulce",
+    size = 3, color = "#174B8B", alpha = 0.6, fontface = "italic"
+  ) +
+  geom_point(alpha = 0.7, size = 2.5) +
+  geom_hline(
+    yintercept = avg_ev,
+    linetype   = "dashed",
+    color      = "#888888",
+    linewidth  = 0.5
+  ) +
+  annotate("text",
+    x = -75, y = avg_ev + 1.5,
+    label = paste0("avg EV: ", round(avg_ev, 1), " mph"),
+    size = 3, color = "#888888", hjust = 0
+  ) +
+  annotate("text",
+    x = 35, y = 108,
+    label = "grupo de jonrónes\n10–30° / 95+ mph",
+    size = 3, color = "#174B8B", hjust = 0, fontface = "italic"
+  ) +
+  scale_color_manual(values = c(
+    "Jonrón" = "#174B8B",
+    "Doble"   = "#4A7FC1",
+    "Triple"   = "#8AADD4",
+    "Sencillo"   = "#C09A5B",
+    "Out"      = "#CCCCCC"
+  )) +
+  scale_x_continuous(limits = c(-80, 80)) +
+  scale_y_continuous(limits = c(20, 120)) +
+  labs(
+    title   = "Salvador Pérez — calidad de contacto, 2025",
+    x       = "Lanzángulo (degrados)",
+    y       = "Velosalida (mph)",
+    color   = NULL,
+    caption = "Fuente: Baseball Savant · ProPlotFits"
+  )  +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title      = element_text(size = 16, face = "bold", color = "#174B8B"),
+    plot.caption    = element_text(size = 8, color = "#888888"),
+    legend.position = "top"
+  )
+```
+
+---
+
+## Thoughts from the Plot
+
+Hay tres puntos para contar:
+
+Primero, Salvy tiene sus jonrónes dentro el "sweet spot" entre velosalida y lanzángulo (más de 95 mph, entre 10-30 degrados). Salvy es un bateador con muchísima habilidades.
+
+Segundo, Salvy tuvo muchas "arrancamargaritas", como se puede ver por los muchos puntos grises que están por encima de su mitad velosalida.
+
+Tercera, los sencillos debajo de su mitad velosalida demuestra que Salvy puede mantenerse productivo incluso cuando no hay energía. Hay mucha variedad entre sus sencillos suaves. Podemos hacer una suposición fundamentada de que hubo al menos 6 sencillos "bloop" para Salvy, porque hay un grupo de puntos dorados que tuvieron un lanzángula de más de 30 degrades debajo de su medio de velosalida.
+
+---
+
+## Antes del comienzo de 2026
+
+Salvy tendrá 36 año en mayo. Todavía tiene las habilidades de un bateador de las Grandes Ligas.
+
+La pregunta es: Pueden los Royals manejar su carga de trabajo lo suficientemente bien como para mantener esos puntos en el punto dulce hasta septiembre? ¿Están los Reales confiados en que los receptores de respaldo intervengan y actúen defensivamente al mismo nivel cuando Salvy necesita un día en DH?
+
+Lo seguiremos todo el año.
+
+*We'll see you on the diamond.*
+
+— *ProPlotFits, Kansas City*
+
+---
+
+*Data: Baseball Savant, 2025 season. Analysis: R / tidyverse / ggplot2. Code available on GitHub.*
