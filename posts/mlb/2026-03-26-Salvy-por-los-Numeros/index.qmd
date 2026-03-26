@@ -1,5 +1,5 @@
 ---
-title: "Salvy by the Numbers"
+title: "Salvy por sus Números"
 description: "Cada lanzamiento que vio en 2025"
 date: "March 26, 2026"
 categories: [royals, salvador-perez, béisbol, sabermetrics]
