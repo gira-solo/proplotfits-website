@@ -1,0 +1,104 @@
+---
+title: "Glosario / Glossary"
+subtitle: "Términos de Statcast en español · Statcast terms in Spanish"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+ProPlotFits cubre los datos de Baseball Savant en dos lenguas. Los términos de Statcast no tienen equivalentes establecidos en español — así que los estamos creando aquí.
+
+ProPlotFits covers Baseball Savant data in two languages. Statcast terms have no established Spanish equivalents — so we are creating them here.
+
+---
+
+## Velosalida · Exit velocity
+
+**¿Qué es?** La velocidad, en millas por hora, a la que la bola salió del bate.
+
+**What is it?** How hard, in miles per hour, a ball was hit by a batter.
+
+**¿Por qué importa?** Una velosalida más alta significa más fuerza detrás del batazo. Sin embargo, la velosalida sola no cuenta toda la historia — el lanzángulo determina a dónde va esa fuerza.
+
+**Why does it matter?** Higher velosalida means more force behind the ball. But velosalida alone does not tell the whole story — lanzángulo determines where that force goes.
+
+**Fuente / Source:** [MLB Statcast Glossary](https://www.mlb.com/glossary/statcast/exit-velocity)
+
+---
+
+## Lanzángulo · Launch angle
+
+**¿Qué es?** El ángulo vertical, en grados, al que la bola salió del bate. Un número negativo es una bola de piso. Cero es un batazo de línea paralelo al suelo. Un número positivo es un elevado.
+
+**What is it?** The vertical angle, in degrees, at which the ball left the bat. Negative is a ground ball. Zero is a line drive parallel to the ground. Positive is a fly ball.
+
+**¿Por qué importa?** El lanzángulo convierte la velosalida en resultados. Una bola golpeada a 100 mph con lanzángulo de 25 grados es un jonrón. La misma bola a -10 grados es una arrancamargarita.
+
+**Why does it matter?** Lanzángulo converts velosalida into outcomes. A ball hit at 100 mph with a lanzángulo of 25 degrees is a home run. The same ball at -10 degrees is a ground out to shortstop.
+
+**Fuente / Source:** [MLB Statcast Glossary](https://www.mlb.com/glossary/statcast/launch-angle)
+
+---
+
+## Sweet spot
+
+**¿Qué es?** La zona óptima en la combinación de velosalida y lanzángulo — específicamente, lanzángulo entre 8 y 32 grados con velosalida de 95 mph o más. Los batazos en esta zona producen jonrones y extrabase a una tasa extraordinaria.
+
+**What is it?** The optimal zone of velosalida and lanzángulo — specifically, lanzángulo between 8 and 32 degrees with velosalida of 95 mph or above. Batted balls in this zone produce home runs and extra base hits at an extraordinary rate.
+
+**¿Por qué importa?** El sweet spot es lo que estamos buscando en cada gráfica de ProPlotFits. Es la zona azul real en la esquina superior derecha del diagrama de dispersión.
+
+**Why does it matter?** The sweet spot is what we look for in every ProPlotFits chart. It is the Royal Blue shaded zone in the upper right corner of the scatter plot.
+
+**Fuente / Source:** [Baseball Savant Metrics Context](https://baseballsavant.mlb.com/statcast-metrics-context)
+
+---
+
+## Barrilitmo · Barrel rate
+
+**¿Qué es?** El porcentaje de batazos que alcanzan la zona de barril — la combinación perfecta de velosalida (mínimo 98 mph) y lanzángulo (entre 26 y 30 grados) donde los resultados positivos son casi garantizados.
+
+**What is it?** The percentage of batted balls that reach the barrel zone — the perfect combination of velosalida (minimum 98 mph) and lanzángulo (between 26 and 30 degrees) where positive outcomes are nearly guaranteed.
+
+**¿Por qué importa?** El barrilitmo elimina la suerte. No importa si los jardineros estaban bien posicionados o si la bola cayó justa o foul. Solo mide si el contacto fue elite.
+
+**Why does it matter?** Barrilitmo eliminates luck. It does not matter where the fielders were standing or whether the ball went fair or foul. It only measures whether the contact itself was elite.
+
+**Fuente / Source:** [Baseball Savant Metrics Context](https://baseballsavant.mlb.com/statcast-metrics-context)
+
+---
+
+## Velosalida50 · EV50
+
+**¿Qué es?** El promedio de velosalida del 50% más fuerte de los batazos de un bateador. Ignora el contacto débil que arrastra el promedio general hacia abajo.
+
+**What is it?** The average velosalida of a batter's hardest 50% of batted balls. It ignores the weak contact that drags the overall average down.
+
+**¿Por qué importa?** La velosalida promedio incluye todos los rodados débiles y los batazos mal conectados. Velosalida50 te muestra de qué es capaz un bateador cuando conecta bien — su verdadero potencial de poder.
+
+**Why does it matter?** Average velosalida includes every weak grounder and mis-hit ball. Velosalida50 shows you what a batter is capable of when he makes clean contact — his true power potential.
+
+**Fuente / Source:** [Baseball Savant Expected Stats](https://baseballsavant.mlb.com/leaderboard/expected_statistics)
+
+---
+
+## xwOBA · Expected weighted on-base average
+
+**¿Qué es?** El promedio ponderado en base esperado. Asigna a cada batazo un resultado esperado basado en la velosalida y el lanzángulo, comparándolo con todos los batazos similares desde 2015. El resultado es lo que el bateador debería haber producido, independientemente de la suerte o la posición de los fildeadores.
+
+**What is it?** Expected weighted on-base average. It assigns each batted ball an expected outcome based on velosalida and lanzángulo, comparing it against all similar batted balls since 2015. The result is what the batter should have produced, regardless of luck or fielder positioning.
+
+**¿Por qué importa?** La brecha entre el wOBA real de un jugador y su xwOBA revela si está teniendo suerte o mala suerte. Un xwOBA alto con un wOBA bajo sugiere que los resultados mejorarán. Un xwOBA bajo con un wOBA alto es una señal de advertencia.
+
+**Why does it matter?** The gap between a player's real wOBA and their xwOBA reveals whether they are getting lucky or unlucky. A high xwOBA with a low wOBA suggests results will improve. A low xwOBA with a high wOBA is a warning sign.
+
+**Fuente / Source:** [MLB Statcast Glossary](https://www.mlb.com/glossary/statcast/expected-woba)
+
+---
+
+*Este glosario crece durante la temporada a medida que introducimos nuevos términos.*
+
+*This glossary grows throughout the season as we introduce new terms.*
+
+*ProPlotFits · Kansas City*

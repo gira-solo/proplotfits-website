@@ -8,7 +8,7 @@ format:
 
 I grew up in Overland Park, Kansas, which puts me squarely in the middle of the country and, depending on who you ask, squarely in the middle of nowhere. I have spent most of my life proving that wrong.
 
-I am a data scientist by training and profession, with a graduate background in business analytics from Miami University. I work in R — tidyverse, ggplot2, Quarto — and I believe that a well-made chart is one of the most persuasive things a person can put in front of another person.
+I am a data scientist by training and profession, with a graduate background in business analytics from Miami University. I work in R — tidyverse, ggplot2, Quarto — and I believe that a well-made plot is one of the most persuasive things a person can put in front of another person.
 
 I also speak Spanish, have written about Mexico-KC relations for the International Relations Council of Kansas City, and have cared about the Royals since before Salvador Pérez arrived in 2011 and made it easier to care about them.
 
@@ -18,6 +18,6 @@ The Latino community in this metro is large, growing, and underserved by sports 
 
 ---
 
-All analysis is done in R. Code is published alongside every post. If something is wrong, say so — the methodology improves when it gets challenged.
+All analysis is done in R. Code is published alongside every post. If something is wrong, please let me know — the methodology improves when it gets challenged.
 
 *ProPlotFits is part of the [Solplots](https://solplots.com) family of data projects.*

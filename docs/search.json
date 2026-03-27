@@ -4,7 +4,56 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I grew up in Overland Park, Kansas, which puts me squarely in the middle of the country and, depending on who you ask, squarely in the middle of nowhere. I have spent most of my life proving that wrong.\nI am a data scientist by training and profession, with a graduate background in business analytics from Miami University. I work in R — tidyverse, ggplot2, Quarto — and I believe that a well-made chart is one of the most persuasive things a person can put in front of another person.\nI also speak Spanish, have written about Mexico-KC relations for the International Relations Council of Kansas City, and have cared about the Royals since before Salvador Pérez arrived in 2011 and made it easier to care about them.\nProPlotFits is the place where those things converge. It is a sports analytics blog that moves between English and Spanish, takes the data seriously, and treats KC as the cosmopolitan city it actually is rather than the flyover stereotype it gets assigned from the coasts.\nThe Latino community in this metro is large, growing, and underserved by sports media. This site is an attempt to fix a small corner of that.\n\nAll analysis is done in R. Code is published alongside every post. If something is wrong, say so — the methodology improves when it gets challenged.\nProPlotFits is part of the Solplots family of data projects."
+    "text": "I grew up in Overland Park, Kansas, which puts me squarely in the middle of the country and, depending on who you ask, squarely in the middle of nowhere. I have spent most of my life proving that wrong.\nI am a data scientist by training and profession, with a graduate background in business analytics from Miami University. I work in R — tidyverse, ggplot2, Quarto — and I believe that a well-made plot is one of the most persuasive things a person can put in front of another person.\nI also speak Spanish, have written about Mexico-KC relations for the International Relations Council of Kansas City, and have cared about the Royals since before Salvador Pérez arrived in 2011 and made it easier to care about them.\nProPlotFits is the place where those things converge. It is a sports analytics blog that moves between English and Spanish, takes the data seriously, and treats KC as the cosmopolitan city it actually is rather than the flyover stereotype it gets assigned from the coasts.\nThe Latino community in this metro is large, growing, and underserved by sports media. This site is an attempt to fix a small corner of that.\n\nAll analysis is done in R. Code is published alongside every post. If something is wrong, please let me know — the methodology improves when it gets challenged.\nProPlotFits is part of the Solplots family of data projects."
+  },
+  {
+    "objectID": "glossary.html",
+    "href": "glossary.html",
+    "title": "Glosario / Glossary",
+    "section": "",
+    "text": "ProPlotFits cubre los datos de Baseball Savant en dos lenguas. Los términos de Statcast no tienen equivalentes establecidos en español — así que los estamos creando aquí.\nProPlotFits covers Baseball Savant data in two languages. Statcast terms have no established Spanish equivalents — so we are creating them here."
+  },
+  {
+    "objectID": "glossary.html#velosalida-exit-velocity",
+    "href": "glossary.html#velosalida-exit-velocity",
+    "title": "Glosario / Glossary",
+    "section": "Velosalida · Exit velocity",
+    "text": "Velosalida · Exit velocity\n¿Qué es? La velocidad, en millas por hora, a la que la bola salió del bate.\nWhat is it? How hard, in miles per hour, a ball was hit by a batter.\n¿Por qué importa? Una velosalida más alta significa más fuerza detrás del batazo. Sin embargo, la velosalida sola no cuenta toda la historia — el lanzángulo determina a dónde va esa fuerza.\nWhy does it matter? Higher velosalida means more force behind the ball. But velosalida alone does not tell the whole story — lanzángulo determines where that force goes.\nFuente / Source: MLB Statcast Glossary"
+  },
+  {
+    "objectID": "glossary.html#lanzángulo-launch-angle",
+    "href": "glossary.html#lanzángulo-launch-angle",
+    "title": "Glosario / Glossary",
+    "section": "Lanzángulo · Launch angle",
+    "text": "Lanzángulo · Launch angle\n¿Qué es? El ángulo vertical, en grados, al que la bola salió del bate. Un número negativo es una bola de piso. Cero es un batazo de línea paralelo al suelo. Un número positivo es un elevado.\nWhat is it? The vertical angle, in degrees, at which the ball left the bat. Negative is a ground ball. Zero is a line drive parallel to the ground. Positive is a fly ball.\n¿Por qué importa? El lanzángulo convierte la velosalida en resultados. Una bola golpeada a 100 mph con lanzángulo de 25 grados es un jonrón. La misma bola a -10 grados es una arrancamargarita.\nWhy does it matter? Lanzángulo converts velosalida into outcomes. A ball hit at 100 mph with a lanzángulo of 25 degrees is a home run. The same ball at -10 degrees is a ground out to shortstop.\nFuente / Source: MLB Statcast Glossary"
+  },
+  {
+    "objectID": "glossary.html#sweet-spot",
+    "href": "glossary.html#sweet-spot",
+    "title": "Glosario / Glossary",
+    "section": "Sweet spot",
+    "text": "Sweet spot\n¿Qué es? La zona óptima en la combinación de velosalida y lanzángulo — específicamente, lanzángulo entre 8 y 32 grados con velosalida de 95 mph o más. Los batazos en esta zona producen jonrones y extrabase a una tasa extraordinaria.\nWhat is it? The optimal zone of velosalida and lanzángulo — specifically, lanzángulo between 8 and 32 degrees with velosalida of 95 mph or above. Batted balls in this zone produce home runs and extra base hits at an extraordinary rate.\n¿Por qué importa? El sweet spot es lo que estamos buscando en cada gráfica de ProPlotFits. Es la zona azul real en la esquina superior derecha del diagrama de dispersión.\nWhy does it matter? The sweet spot is what we look for in every ProPlotFits chart. It is the Royal Blue shaded zone in the upper right corner of the scatter plot.\nFuente / Source: Baseball Savant Metrics Context"
+  },
+  {
+    "objectID": "glossary.html#barrilitmo-barrel-rate",
+    "href": "glossary.html#barrilitmo-barrel-rate",
+    "title": "Glosario / Glossary",
+    "section": "Barrilitmo · Barrel rate",
+    "text": "Barrilitmo · Barrel rate\n¿Qué es? El porcentaje de batazos que alcanzan la zona de barril — la combinación perfecta de velosalida (mínimo 98 mph) y lanzángulo (entre 26 y 30 grados) donde los resultados positivos son casi garantizados.\nWhat is it? The percentage of batted balls that reach the barrel zone — the perfect combination of velosalida (minimum 98 mph) and lanzángulo (between 26 and 30 degrees) where positive outcomes are nearly guaranteed.\n¿Por qué importa? El barrilitmo elimina la suerte. No importa si los jardineros estaban bien posicionados o si la bola cayó justa o foul. Solo mide si el contacto fue elite.\nWhy does it matter? Barrilitmo eliminates luck. It does not matter where the fielders were standing or whether the ball went fair or foul. It only measures whether the contact itself was elite.\nFuente / Source: Baseball Savant Metrics Context"
+  },
+  {
+    "objectID": "glossary.html#velosalida50-ev50",
+    "href": "glossary.html#velosalida50-ev50",
+    "title": "Glosario / Glossary",
+    "section": "Velosalida50 · EV50",
+    "text": "Velosalida50 · EV50\n¿Qué es? El promedio de velosalida del 50% más fuerte de los batazos de un bateador. Ignora el contacto débil que arrastra el promedio general hacia abajo.\nWhat is it? The average velosalida of a batter’s hardest 50% of batted balls. It ignores the weak contact that drags the overall average down.\n¿Por qué importa? La velosalida promedio incluye todos los rodados débiles y los batazos mal conectados. Velosalida50 te muestra de qué es capaz un bateador cuando conecta bien — su verdadero potencial de poder.\nWhy does it matter? Average velosalida includes every weak grounder and mis-hit ball. Velosalida50 shows you what a batter is capable of when he makes clean contact — his true power potential.\nFuente / Source: Baseball Savant Expected Stats"
+  },
+  {
+    "objectID": "glossary.html#xwoba-expected-weighted-on-base-average",
+    "href": "glossary.html#xwoba-expected-weighted-on-base-average",
+    "title": "Glosario / Glossary",
+    "section": "xwOBA · Expected weighted on-base average",
+    "text": "xwOBA · Expected weighted on-base average\n¿Qué es? El promedio ponderado en base esperado. Asigna a cada batazo un resultado esperado basado en la velosalida y el lanzángulo, comparándolo con todos los batazos similares desde 2015. El resultado es lo que el bateador debería haber producido, independientemente de la suerte o la posición de los fildeadores.\nWhat is it? Expected weighted on-base average. It assigns each batted ball an expected outcome based on velosalida and lanzángulo, comparing it against all similar batted balls since 2015. The result is what the batter should have produced, regardless of luck or fielder positioning.\n¿Por qué importa? La brecha entre el wOBA real de un jugador y su xwOBA revela si está teniendo suerte o mala suerte. Un xwOBA alto con un wOBA bajo sugiere que los resultados mejorarán. Un xwOBA bajo con un wOBA alto es una señal de advertencia.\nWhy does it matter? The gap between a player’s real wOBA and their xwOBA reveals whether they are getting lucky or unlucky. A high xwOBA with a low wOBA suggests results will improve. A low xwOBA with a high wOBA is a warning sign.\nFuente / Source: MLB Statcast Glossary\n\nEste glosario crece durante la temporada a medida que introducimos nuevos términos.\nThis glossary grows throughout the season as we introduce new terms.\nProPlotFits · Kansas City"
   },
   {
     "objectID": "index.html",

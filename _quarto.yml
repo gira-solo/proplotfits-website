@@ -11,6 +11,8 @@ website:
         href: index.qmd
       - text: "Posts"
         href: posts.qmd
+      - text: "Glossary"
+        href: glossary.qmd
       - text: "About"
         href: about.qmd
     right:

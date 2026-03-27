@@ -1,0 +1,209 @@
+library(tidyverse)
+library(gifski)   # install.packages("gifski") if needed
+library(magick)   # install.packages("magick") if needed — fallback stitcher
+
+# ── 1. Load data ──────────────────────────────────────────────────────────────
+witt_2025 <- read_csv(
+  "https://baseballsavant.mlb.com/statcast_search/csv?all=true&hfSea=2025%7C&player_type=batter&batters_lookup%5B%5D=677951&type=details&game_date_gt=2025-03-01&game_date_lt=2025-09-30"
+)
+
+plot_data <- witt_2025 %>%
+  filter(!is.na(launch_speed), !is.na(launch_angle)) %>%
+  mutate(
+    outcome = case_when(
+      events == "home_run"       ~ "Home run",
+      events == "single"         ~ "Single",
+      events == "double"         ~ "Double",
+      events == "triple"         ~ "Triple",
+      events %in% c("field_out", "force_out", "grounded_into_double_play",
+                    "double_play", "fielders_choice_out") ~ "Out",
+      TRUE ~ NA_character_
+    ),
+    game_date = as.Date(game_date)
+  ) %>%
+  filter(!is.na(outcome)) %>%
+  mutate(outcome = factor(outcome, levels = c("Home run","Double","Triple","Single","Out"))) %>%
+  arrange(game_date)
+
+avg_ev <- witt_2025 %>%
+  filter(!is.na(launch_speed)) %>%
+  summarise(mean_ev = mean(launch_speed)) %>%
+  pull(mean_ev)
+
+n_points <- nrow(plot_data)
+
+# ── 2. Canvas dimensions (9:16 portrait) ─────────────────────────────────────
+# 4.5 x 8 inches at 200 dpi = 900 x 1600 px — standard 9:16
+PLOT_W   <- 4.5
+PLOT_H   <- 8
+PLOT_DPI <- 200
+
+# ── 3. Plot function ──────────────────────────────────────────────────────────
+color_vals <- c(
+  "Home run" = "#174B8B",
+  "Double"   = "#4A7FC1",
+  "Triple"   = "#8AADD4",
+  "Single"   = "#C09A5B",
+  "Out"      = "#CCCCCC"
+)
+
+make_plot <- function(df) {
+  newest <- df[nrow(df), ]
+  
+  ggplot(df, aes(x = launch_angle, y = launch_speed, color = outcome)) +
+    # Sweet spot zone
+    annotate("rect",
+             xmin = 8, xmax = 32, ymin = 95, ymax = Inf,
+             fill = "#174B8B", alpha = 0.08) +
+    annotate("text",
+             x = 20, y = 117, label = "sweet spot",
+             size = 4, color = "#174B8B", alpha = 0.6, fontface = "italic") +
+    # Avg EV line
+    geom_hline(yintercept = avg_ev,
+               linetype = "dashed", color = "#888888", linewidth = 0.5) +
+    annotate("text",
+             x = -75, y = avg_ev + 1.5,
+             label = paste0("avg EV: ", round(avg_ev, 1), " mph"),
+             size = 3.5, color = "#888888", hjust = 0) +
+    # HR cluster label
+    annotate("text",
+             x = 35, y = 108,
+             label = "home runs cluster\n10–30° / 95+ mph",
+             size = 3.5, color = "#174B8B", hjust = 0, fontface = "italic") +
+    # All accumulated points
+    geom_point(alpha = 0.7, size = 3) +
+    # Highlight ring on the newest (most recent) point
+    geom_point(
+      data        = newest,
+      size        = 6,
+      shape       = 21,
+      color       = "white",
+      fill        = NA,
+      stroke      = 1.2,
+      show.legend = FALSE
+    ) +
+    labs(
+      title    = "Bobby Witt Jr.",
+      subtitle = paste0("Quality of contact, 2025 · ", format(newest$game_date, "%B %d")),
+      x        = "Launch angle (degrees)",
+      y        = "Exit velocity (mph)",
+      color    = NULL,
+      caption  = "Source: Baseball Savant · ProPlotFits"
+    ) +
+    scale_color_manual(values = color_vals, drop = FALSE) +
+    scale_x_continuous(limits = c(-80, 80)) +
+    scale_y_continuous(limits = c(20, 120)) +
+    theme_minimal(base_family = "sans") +
+    theme(
+      plot.title      = element_text(size = 22, face = "bold", color = "#174B8B",
+                                     margin = margin(b = 2)),
+      plot.subtitle   = element_text(size = 13, color = "#555555",
+                                     margin = margin(b = 10)),
+      plot.caption    = element_text(size = 9,  color = "#888888"),
+      plot.margin     = margin(t = 24, r = 16, b = 16, l = 16),
+      axis.title      = element_text(size = 12),
+      axis.text       = element_text(size = 10),
+      legend.position = "top",
+      legend.text     = element_text(size = 11)
+    )
+}
+
+# ── 4. Set up frames directory ────────────────────────────────────────────────
+frames_dir <- "gif_frames"
+if (!dir.exists(frames_dir)) dir.create(frames_dir)
+old_files <- list.files(frames_dir, full.names = TRUE, pattern = "\\.png$")
+if (length(old_files) > 0) file.remove(old_files)
+
+frame_idx <- 1
+
+save_frame <- function(p) {
+  ggsave(
+    filename = file.path(frames_dir, sprintf("frame_%05d.png", frame_idx)),
+    plot     = p,
+    width    = PLOT_W,
+    height   = PLOT_H,
+    dpi      = PLOT_DPI
+  )
+  frame_idx <<- frame_idx + 1
+}
+
+# ── 5. Empty canvas hold (~2 s at 0.08 s/frame) ───────────────────────────────
+message("Saving empty canvas frames...")
+empty_plot <- ggplot(plot_data[0, ], aes(x = launch_angle, y = launch_speed, color = outcome)) +
+  annotate("rect", xmin = 8, xmax = 32, ymin = 95, ymax = Inf,
+           fill = "#174B8B", alpha = 0.08) +
+  annotate("text", x = 20, y = 117, label = "sweet spot",
+           size = 4, color = "#174B8B", alpha = 0.6, fontface = "italic") +
+  geom_hline(yintercept = avg_ev, linetype = "dashed", color = "#888888", linewidth = 0.5) +
+  annotate("text", x = -75, y = avg_ev + 1.5,
+           label = paste0("avg EV: ", round(avg_ev, 1), " mph"),
+           size = 3.5, color = "#888888", hjust = 0) +
+  annotate("text", x = 35, y = 108,
+           label = "home runs cluster\n10–30° / 95+ mph",
+           size = 3.5, color = "#174B8B", hjust = 0, fontface = "italic") +
+  scale_color_manual(values = color_vals, drop = FALSE) +
+  scale_x_continuous(limits = c(-80, 80)) +
+  scale_y_continuous(limits = c(20, 120)) +
+  labs(title = "Bobby Witt Jr.",
+       subtitle = "Quality of contact, 2025",
+       x = "Launch angle (degrees)", y = "Exit velocity (mph)",
+       color = NULL, caption = "Source: Baseball Savant · ProPlotFits") +
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title    = element_text(size = 22, face = "bold", color = "#174B8B",
+                                 margin = margin(b = 2)),
+    plot.subtitle = element_text(size = 13, color = "#555555",
+                                 margin = margin(b = 10)),
+    plot.caption  = element_text(size = 9,  color = "#888888"),
+    plot.margin   = margin(t = 24, r = 16, b = 16, l = 16),
+    axis.title    = element_text(size = 12),
+    axis.text     = element_text(size = 10),
+    legend.position = "top",
+    legend.text   = element_text(size = 11)
+  )
+
+for (i in 1:25) save_frame(empty_plot)
+
+# ── 6. Loop: one pitch added per frame ───────────────────────────────────────
+message("Saving one-pitch-at-a-time frames...")
+
+for (i in seq_len(n_points)) {
+  p <- make_plot(plot_data[1:i, ])
+  save_frame(p)
+  if (i %% 10 == 0) message("  Pitch ", i, " / ", n_points)
+}
+
+# ── 7. Hold on final frame (~3 s) ────────────────────────────────────────────
+message("Saving final hold frames...")
+final_plot <- make_plot(plot_data)
+for (i in 1:38) save_frame(final_plot)
+
+# ── 8. Stitch GIF ─────────────────────────────────────────────────────────────
+message("Stitching GIF...")
+png_files <- sort(list.files(frames_dir, full.names = TRUE, pattern = "\\.png$"))
+
+if (requireNamespace("gifski", quietly = TRUE)) {
+  gifski::gifski(
+    png_files = png_files,
+    gif_file  = "witt_points_9x16.gif",
+    width     = 900,
+    height    = 1600,
+    delay     = 0.08
+  )
+} else {
+  message("gifski not found, falling back to magick...")
+  frames <- magick::image_read(png_files)
+  animation <- magick::image_animate(frames, fps = 12, loop = 0)
+  magick::image_write(animation, "witt_points_9x16.gif")
+}
+
+message("Done! Saved to witt_points_9x16.gif")
+
+# ── 9. Convert to MP4 (recommended for Reels / TikTok / Shorts) ──────────────
+# Uncomment to export as MP4
+library(av)
+av::av_encode_video(
+  input     = png_files,
+  output    = "witt_points_9x16.mp4",
+  framerate = 12
+)
