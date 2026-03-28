@@ -11,7 +11,13 @@ royals_game_report <- function(game_date) {
     "&type=details",
     "&game_date_gt={game_date}&game_date_lt={game_date}"
   )
-  read_csv(url, show_col_types = FALSE)
+  
+  Sys.setenv("VROOM_TEMP_PATH" = "C:/Users/peter/Documents/proplotfits")
+  tmp <- "C:/Users/peter/Documents/proplotfits/temp_game.csv"
+  download.file(url, destfile = tmp, mode = "wb", quiet = TRUE)
+  data <- read_csv(tmp, show_col_types = FALSE)
+  file.remove(tmp)
+  data
 }
 
 
@@ -73,7 +79,8 @@ plot_game_report <- function(game_date, opponent) {
   royal_blue_dark  <- "#174B8B"
   gold             <- "#C09A5B"
   
-  ggplot(plot_data, aes(x = launch_angle, y = launch_speed, color = outcome)) +
+  plot <- 
+    ggplot(plot_data, aes(x = launch_angle, y = launch_speed, color = outcome)) +
     annotate("rect",
              xmin = 8, xmax = 32, ymin = 95, ymax = Inf,
              fill = royal_blue_dark, alpha = 0.08
@@ -147,5 +154,6 @@ plot_game_report <- function(game_date, opponent) {
     bg       = "white"
   )
   
+  return(plot)
 }
 

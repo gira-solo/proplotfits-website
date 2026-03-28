@@ -1,0 +1,36 @@
+---
+title: "Royals vs. Braves · 2026-03-27"
+description: "Velosalida y lanzángulo · Atlanta, GA"
+date: last-modified
+categories: [royals, 2026, game-report, atlanta-braves]
+author: "Peter Fortunato"
+---
+
+```{r}
+#| fig-show: hold
+#| results: hide
+#| message: false
+#| echo: false
+#| warning: false
+
+source(here::here("functions/game_report.R"))
+plot_game_report("2026-03-27", "Braves")
+```
+
+## El sweet spot
+
+Nadie encontró el sweet spot. None of the Royals were able to hit with elite velosalida at an optimal lanzángulo. Empezando la temporada con hielo, starting off so cold they might as well be frozen. Hubo algunos sencillos, there were a few singles, but that was it. Solo outs y sencillos. No hubo dobles ni jonrónes.
+
+Chris Sale y los Braves kept everything flat for Opening Day.
+
+## Debajo de la media
+
+Bobby Witt, Jr. destacó, con dos sencillos, one that did get somewhat elevated with above average velosalida. Sin embargo, Jonathan India had a particularly bad fly out as can be seen in the bottom right.
+
+## Mirando adelante
+
+Let's defrost; vámonos a la playa.
+
+------------------------------------------------------------------------
+
+*Fuente: Baseball Savant · ProPlotFits*
