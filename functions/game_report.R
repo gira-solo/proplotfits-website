@@ -20,16 +20,51 @@ royals_game_report <- function(game_date) {
   data
 }
 
-
-plot_game_report <- function(game_date, opponent) {
+get_opponent_data <- function(game_date, opp_code) {
+  season <- substr(game_date, 1, 4)
+  url <- glue(
+    "https://baseballsavant.mlb.com/statcast_search/csv?all=true",
+    "&hfSea={season}%7C&player_type=batter&hfTeam={opp_code}%7C",
+    "&type=details",
+    "&game_date_gt={game_date}&game_date_lt={game_date}"
+  )
   
-  # pull data
+  tmp <- "C:/Users/peter/Documents/proplotfits/temp_score.csv"
+  download.file(url, destfile = tmp, mode = "wb", quiet = TRUE)
+  data <- read_csv(tmp, show_col_types = FALSE)
+  file.remove(tmp)
+  data
+}
+
+plot_game_report <- function(game_date, opponent, opponent_code) {
+  
+  # pull royals batting data
   game_data <- royals_game_report(game_date)
   
-  # determine season from date
-  season <- substr(game_date, 1, 4)
+  # pull opponent batting data for score only
+  opp_data <- get_opponent_data(game_date, opponent_code)
   
-  # build contact summary
+  # combine for accurate final score
+  full_game <- bind_rows(game_data, opp_data)
+  
+  final <- full_game %>%
+    summarise(
+      home_team       = first(home_team),
+      post_home_score = max(post_home_score, na.rm = TRUE),
+      post_away_score = max(post_away_score, na.rm = TRUE)
+    )
+  
+  kc_is_home <- final$home_team == "KC"
+  kc_score   <- if_else(kc_is_home, final$post_home_score, final$post_away_score)
+  opp_score  <- if_else(kc_is_home, final$post_away_score, final$post_home_score)
+  
+  result <- if_else(
+    kc_score > opp_score,
+    glue("KC {kc_score}, {opponent} {opp_score}"),
+    glue("{opponent} {opp_score}, KC {kc_score}")
+  )
+  
+  # build contact summary from royals data only
   plot_data <- game_data %>%
     filter(!is.na(launch_speed), !is.na(launch_angle)) %>%
     mutate(
@@ -58,28 +93,11 @@ plot_game_report <- function(game_date, opponent) {
     summarise(mean_ev = mean(launch_speed)) %>%
     pull(mean_ev)
   
-  # game result
-  final <- game_data %>%
-    filter(!is.na(home_score), !is.na(away_score)) %>%
-    slice_max(at_bat_number, n = 1) %>%
-    slice(1)
-  
-  home <- final$home_team
-  away <- final$away_team
-  home_score <- final$post_home_score
-  away_score <- final$post_away_score
-  
-  result <- if_else(
-    away_score > home_score,
-    glue("KC {away_score}, {opponent} {home_score}"),
-    glue("{opponent} {home_score}, KC {away_score}")
-  )
-  
   # palette
-  royal_blue_dark  <- "#174B8B"
-  gold             <- "#C09A5B"
+  royal_blue_dark <- "#174B8B"
+  gold            <- "#C09A5B"
   
-  plot <- 
+  plot <-
     ggplot(plot_data, aes(x = launch_angle, y = launch_speed, color = outcome)) +
     annotate("rect",
              xmin = 8, xmax = 32, ymin = 95, ymax = Inf,
@@ -94,7 +112,8 @@ plot_game_report <- function(game_date, opponent) {
       data = plot_data %>%
         filter(
           (launch_angle >= 8 & launch_angle <= 32 & launch_speed >= 95) |
-            launch_speed < avg_ev
+            launch_speed < avg_ev |
+            outcome %in% c("Sencillo", "Doble", "Triple", "Jonrón")
         ),
       aes(label = last_name),
       size               = 2.5,
@@ -130,12 +149,12 @@ plot_game_report <- function(game_date, opponent) {
     scale_x_continuous(limits = c(-80, 80)) +
     scale_y_continuous(limits = c(20, 120)) +
     labs(
-      title   = glue("Royals vs. {opponent} · {game_date}"),
+      title    = glue("Royals vs. {opponent} · {game_date}"),
       subtitle = glue("Velosalida vs. lanzángulo · cada batazo · {result}"),
-      x       = "Lanzángulo (grados)",
-      y       = "Velosalida (mph)",
-      color   = NULL,
-      caption = "Fuente: Baseball Savant · ProPlotFits"
+      x        = "Lanzángulo (grados)",
+      y        = "Velosalida (mph)",
+      color    = NULL,
+      caption  = "Fuente: Baseball Savant · ProPlotFits"
     ) +
     theme_minimal(base_family = "sans") +
     theme(
@@ -156,4 +175,3 @@ plot_game_report <- function(game_date, opponent) {
   
   return(plot)
 }
-
