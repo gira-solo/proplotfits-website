@@ -1,0 +1,60 @@
+==========================================================
+PROPLOTFITS | ML PREDICTION REPORT
+Generated : 2026-03-29 12:55:24 EDT
+==========================================================
+
+MATCHUP   : Texas Rangers (away) @ Philadelphia Phillies (home)
+DATE      : 2026-03-29
+GAME_PK   : 823487
+
+!! LOW SAMPLE WARNING !!
+   PHI=2 games, TEX=2 games played this season.
+   Rolling averages reflect fewer than 10 games — treat predictions
+   as heavily influenced by 2025 season priors.
+
+----------------------------------------------------------
+STARTING PITCHERS
+----------------------------------------------------------
+HOME  Jesús Luzardo (Philadelphia Phillies)
+      ERA  : 3.93  |  FIP  : 2.87  |  WHIP : 1.22
+      K/9  : 10.3  |  IP   : 178.2  |  Season: 2025
+
+AWAY  MacKenzie Gore (Texas Rangers)
+      ERA  : 4.33  |  FIP  : 3.90  |  WHIP : 1.40
+      K/9  : 10.1  |  IP   : 153.2  |  Season: 2025
+
+----------------------------------------------------------
+TEAM CONTEXT  (L2 rolling  |  season-to-date)
+----------------------------------------------------------
+Philadelphia Phillies   Runs/G: 4.50  OPS: 0.627  ISO: 0.132  BB%: 5.1%  K%: 27.6%
+(pitching / bullpen)    RA/G:  4.00  ERA: 3.30  FIP: 3.22  WHIP: 1.15  K/9: 11.4
+
+Texas Rangers           Runs/G: 4.00  OPS: 0.656  ISO: 0.134  BB%: 5.0%  K%: 30.8%
+(pitching / bullpen)    RA/G:  4.50  ERA: 2.81  FIP: 3.35  WHIP: 1.09  K/9: 10.6
+
+Park: Citizens Bank Park              Factor: 1.069  [1.000 = league avg]
+Pythagorean edge (home minus away)      : 0.107
+
+----------------------------------------------------------
+MODEL PREDICTIONS
+----------------------------------------------------------
+Win probability  :  Philadelphia Phillies 64.2%  |  Texas Rangers 35.8%
+Predicted total  :  8.2 runs
+Run line lean    :  No strong signal
+
+----------------------------------------------------------
+MODEL METADATA
+----------------------------------------------------------
+Trained on       : 2022, 2023, 2024 seasons
+Test season      : 2025
+Win prob accuracy: 56.2% (test set)
+Total MAE        : 3.60 runs (test set)
+Starter data from: 2025 season (most recent in pitcher_stats)
+Report path      : reports/2026-03-29/TEX_at_PHI_2026-03-29.txt
+
+NOTE: This model is trained on 2023-2024 data. 2026 is the first live
+prediction season. Rolling team features use 2026 game logs where
+available, falling back to league-average priors for early-season games.
+We are learning in public — predictions will improve as the season grows.
+==========================================================
+

@@ -1,0 +1,60 @@
+==========================================================
+PROPLOTFITS | ML PREDICTION REPORT
+Generated : 2026-03-29 12:55:26 EDT
+==========================================================
+
+MATCHUP   : Colorado Rockies (away) @ Miami Marlins (home)
+DATE      : 2026-03-29
+GAME_PK   : 823891
+
+!! LOW SAMPLE WARNING !!
+   MIA=2 games, COL=2 games played this season.
+   Rolling averages reflect fewer than 10 games — treat predictions
+   as heavily influenced by 2025 season priors.
+
+----------------------------------------------------------
+STARTING PITCHERS
+----------------------------------------------------------
+HOME  Max Meyer (Miami Marlins)
+      ERA  : 5.03  |  FIP  : 4.52  |  WHIP : 1.46
+      K/9  : 9.3  |  IP   : 59.0  |  Season: 2025
+
+AWAY  Jose Quintana (Colorado Rockies)
+      ERA  : 3.96  |  FIP  : 4.78  |  WHIP : 1.29
+      K/9  : 6.1  |  IP   : 131.2  |  Season: 2025
+
+----------------------------------------------------------
+TEAM CONTEXT  (L2 rolling  |  season-to-date)
+----------------------------------------------------------
+Miami Marlins           Runs/G: 3.00  OPS: 0.729  ISO: 0.109  BB%: 4.3%  K%: 15.7%
+(pitching / bullpen)    RA/G:  2.00  ERA: 1.50  FIP: 2.93  WHIP: 0.89  K/9: 9.5
+
+Colorado Rockies        Runs/G: 2.00  OPS: 0.542  ISO: 0.106  BB%: 4.4%  K%: 27.9%
+(pitching / bullpen)    RA/G:  3.00  ERA: 3.38  FIP: 3.66  WHIP: 1.31  K/9: 6.2
+
+Park: loanDepot park                  Factor: 1.043  [1.000 = league avg]
+Pythagorean edge (home minus away)      : 0.355
+
+----------------------------------------------------------
+MODEL PREDICTIONS
+----------------------------------------------------------
+Win probability  :  Miami Marlins 67.4%  |  Colorado Rockies 32.6%
+Predicted total  :  9.0 runs
+Run line lean    :  Miami Marlins -1.5
+
+----------------------------------------------------------
+MODEL METADATA
+----------------------------------------------------------
+Trained on       : 2022, 2023, 2024 seasons
+Test season      : 2025
+Win prob accuracy: 56.2% (test set)
+Total MAE        : 3.60 runs (test set)
+Starter data from: 2025 season (most recent in pitcher_stats)
+Report path      : reports/2026-03-29/COL_at_MIA_2026-03-29.txt
+
+NOTE: This model is trained on 2023-2024 data. 2026 is the first live
+prediction season. Rolling team features use 2026 game logs where
+available, falling back to league-average priors for early-season games.
+We are learning in public — predictions will improve as the season grows.
+==========================================================
+

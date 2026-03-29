@@ -1,0 +1,60 @@
+==========================================================
+PROPLOTFITS | ML PREDICTION REPORT
+Generated : 2026-03-29 12:55:29 EDT
+==========================================================
+
+MATCHUP   : Tampa Bay Rays (away) @ St. Louis Cardinals (home)
+DATE      : 2026-03-29
+GAME_PK   : 823079
+
+!! LOW SAMPLE WARNING !!
+   STL=2 games, TB=2 games played this season.
+   Rolling averages reflect fewer than 10 games — treat predictions
+   as heavily influenced by 2025 season priors.
+
+----------------------------------------------------------
+STARTING PITCHERS
+----------------------------------------------------------
+HOME  Dustin May (St. Louis Cardinals)
+      ERA  : 4.96  |  FIP  : 4.85  |  WHIP : 1.42
+      K/9  : 8.4  |  IP   : 132.1  |  Season: 2025
+
+AWAY  Steven Matz (Tampa Bay Rays)
+      ERA  : 3.22  |  FIP  : 3.50  |  WHIP : 1.14
+      K/9  : 7.1  |  IP   : 72.2  |  Season: 2025
+
+----------------------------------------------------------
+TEAM CONTEXT  (L2 rolling  |  season-to-date)
+----------------------------------------------------------
+St. Louis Cardinals     Runs/G: 7.50  OPS: 0.724  ISO: 0.139  BB%: 4.3%  K%: 15.7%
+(pitching / bullpen)    RA/G:  6.00  ERA: 5.30  FIP: 3.92  WHIP: 1.78  K/9: 6.1
+
+Tampa Bay Rays          Runs/G: 6.00  OPS: 0.688  ISO: 0.035  BB%: 10.0%  K%: 15.4%
+(pitching / bullpen)    RA/G:  7.50  ERA: 7.04  FIP: 3.99  WHIP: 1.38  K/9: 5.6
+
+Park: Busch Stadium                   Factor: 0.964  [1.000 = league avg]
+Pythagorean edge (home minus away)      : 0.201
+
+----------------------------------------------------------
+MODEL PREDICTIONS
+----------------------------------------------------------
+Win probability  :  St. Louis Cardinals 51.2%  |  Tampa Bay Rays 48.8%
+Predicted total  :  9.2 runs
+Run line lean    :  No strong signal
+
+----------------------------------------------------------
+MODEL METADATA
+----------------------------------------------------------
+Trained on       : 2022, 2023, 2024 seasons
+Test season      : 2025
+Win prob accuracy: 56.2% (test set)
+Total MAE        : 3.60 runs (test set)
+Starter data from: 2025 season (most recent in pitcher_stats)
+Report path      : reports/2026-03-29/TB_at_STL_2026-03-29.txt
+
+NOTE: This model is trained on 2023-2024 data. 2026 is the first live
+prediction season. Rolling team features use 2026 game logs where
+available, falling back to league-average priors for early-season games.
+We are learning in public — predictions will improve as the season grows.
+==========================================================
+
