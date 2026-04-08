@@ -1,0 +1,45 @@
+---
+title: "Royals vs. Guardians · 2026-04-07"
+description: "Velosalida y lanzángulo · Atlanta, GA"
+date: "April 8, 2026"
+categories: [royals, 2026, game-report, cleveland-guardians]
+image: report_cards/royals_2026-04-08_guardians.png
+author: "Peter Fortunato"
+---
+
+```{r}
+#| fig-show: hold
+#| fig-height: 5
+#| fig-width: 6
+#| fig-dpi: 300
+#| results: hide
+#| message: false
+#| echo: false
+#| warning: false
+
+source(here::here("functions/game_report.R"))
+plot_game_report("2026-04-07", "Guardians", "CLE")
+```
+## El sweet spot
+
+Solo hubo one hit, dentro el sweet spot por un home run, pero todo las otras opportunities fueron outs. Salvy again encontró el sweet spot, pero para un out.
+
+Overall, buen trabajo para Jensen.
+
+## Debajo de la media
+
+Witt needs to pick it up. 
+
+## Mirando adelante
+
+Espero que encontremos more opportunities to connect, pero it seems like los Royals todavía tienen mucha fría. They are still feeling cold.
+
+------------------------------------------------------------------------
+
+*Fuente: Baseball Savant · ProPlotFits*
+
+
+
+
+
+

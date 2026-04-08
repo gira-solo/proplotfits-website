@@ -46,7 +46,7 @@ The Blue Bloods of college basketball is up for debate. But given that your corr
 
 If there is a second tier of college basketball elite, it includes all the teams that have won multiple championships: the University of Florida, Villanova University along Philadelphia's Main Line, the University of Louisville (personally, I recognize their 2013 championship, simply to honor Kevin Ware), the University of Cincinnati, Michigan State University, North Carolina State University, Oklahoma State University (known as the State Agricultural and Mechanical College of Oklahoma when they won back-to-back in the 1944-45 and 1945-46 seasons), and the University of San Francisco.
 
-The third tier are those who were the last team to cut down the nets once, except for maybe the City College of New York and their 1950 championship. When reporting on college basketball analytics with the intent of advising readers on how to best bet on performance outcomes, that story is, at best, for another time. Perhaps Junior Soprano is still lucid enough let us know why nobody was able to beat the spread. 
+The third tier are those who were the last team to cut down the nets once, except for maybe the City College of New York and their 1950 championship. When reporting on college basketball analytics with the intent of advising readers on how to best model performance outcomes, that story is, at best, for another time. Perhaps Junior Soprano is still lucid enough let us know why nobody was able to beat the spread. 
 
 Then there is everybody else, including Auburn and Miami of Ohio. As far as I am concerned, they are in the same league as "better" programs like Xavier, Purdue, and the University of Illinois.
 
@@ -166,7 +166,7 @@ It was far enough from home such that Peter was the only student from his gradua
 
 ---
 
-On January 7, 2018, one day before his 62nd birthday, Henry, suffering from late-stage lung cancer, organizes his (pre-funeral)[https://www.kcur.org/arts-life/2018-02-06/henry-fortunato-who-revolutionized-kansas-city-library-events-and-area-walking-trails-dies-at-62] funeral at the Kansas City Public Library-Country Club Plaza Branch. I was 20 and a sophomore at Miami at the time. It was a beautiful celebration of life where Kansas City leaders thanked my father for his service to the community, and where my little sister sang a beautiful rendition of "Come On Eileen".
+On January 7, 2018, one day before his 62nd birthday, Henry, suffering from late-stage lung cancer, organizes his [pre-funeral](https://www.kcur.org/arts-life/2018-02-06/henry-fortunato-who-revolutionized-kansas-city-library-events-and-area-walking-trails-dies-at-62) funeral at the Kansas City Public Library-Country Club Plaza Branch. I was 20 and a sophomore at Miami at the time. It was a beautiful celebration of life where Kansas City leaders thanked my father for his service to the community, and where my little sister sang a beautiful rendition of "Come On Eileen".
 
 On February 5, 2018, Henry Fortunato passes away at home; I woke up that day in my dorm inside Hillcrest Hall, on the Western Campus, and fell asleep at home in Kansas.
 
@@ -234,5 +234,5 @@ If you need a symbol to remind you of your unwavering commitment and loyalty to 
 
 ---
 
-*Peter Maximilian Fortunato is a graduate of Miami University's College of Liberal Arts and Farmer School of Business*
+*Peter Maximilian Fortunato is a graduate of Miami University's College of Arts and Sciences and Farmer School of Business*
 

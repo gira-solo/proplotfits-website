@@ -1,0 +1,16 @@
+{
+  "hash": "692355f1bf644502f9bc252264134363",
+  "result": {
+    "markdown": "---\ntitle: \"Royals vs. Braves · 2026-03-29\"\ndescription: \"Velosalida y lanzángulo · Atlanta, GA\"\ndate: \"March 30, 2026\"\ncategories: [royals, 2026, game-report, atlanta-braves]\nimage: report_cards/royals_2026-03-29_braves.png\nauthor: \"Peter Fortunato\"\n---\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=1800}\n:::\n:::\n\n## El sweet spot\n\nFinalmente, llegamos al primer win of the season, gracias a un home run from Jensen, un doble de Loftin, y dos hard hit singles from Witt Jr. and Pasquantino.\n\n## Debajo de la media\n\nTough day for Calglianone y Loftin (afuera de su doble). \n\n## Mirando adelante\n\nFuimos a la playa. We finally defrosted and went to the beach to avoid an Opening Series Sweep.\n\n------------------------------------------------------------------------\n\n*Fuente: Baseball Savant · ProPlotFits*\n\n\n\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

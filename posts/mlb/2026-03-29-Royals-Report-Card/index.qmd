@@ -1,0 +1,43 @@
+---
+title: "Royals vs. Braves · 2026-03-29"
+description: "Velosalida y lanzángulo · Atlanta, GA"
+date: "March 30, 2026"
+categories: [royals, 2026, game-report, atlanta-braves]
+image: report_cards/royals_2026-03-29_braves.png
+author: "Peter Fortunato"
+---
+
+```{r}
+#| fig-show: hold
+#| fig-height: 5
+#| fig-width: 6
+#| fig-dpi: 300
+#| results: hide
+#| message: false
+#| echo: false
+#| warning: false
+
+source(here::here("functions/game_report.R"))
+plot_game_report("2026-03-29", "Braves", "ATL")
+```
+## El sweet spot
+
+Finalmente, llegamos al primer win of the season, gracias a un home run from Jensen, un doble de Loftin, y dos hard hit singles from Witt Jr. and Pasquantino.
+
+## Debajo de la media
+
+Tough day for Calglianone y Loftin (afuera de su doble). 
+
+## Mirando adelante
+
+Fuimos a la playa. We finally defrosted and went to the beach to avoid an Opening Series Sweep.
+
+------------------------------------------------------------------------
+
+*Fuente: Baseball Savant · ProPlotFits*
+
+
+
+
+
+

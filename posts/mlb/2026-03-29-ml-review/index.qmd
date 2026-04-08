@@ -1,0 +1,89 @@
+---
+title: "Scoring March 29, 2026 Predictions"
+date: "March 30, 2029"
+categories: [predictions, MLB, machine learning]
+---
+
+## Introduction
+
+I am reviewing (scoring) the results of yesterday's predictions. To be honest, I didn't believe these would be that useful considering that yesterday was the third game these teams were playing in the season. 
+
+Conventional wisdom says that the 10-game rolling average is the most useful way of organizing stats when trying to predict game outcomes, so we had to default to last year's data in order to make these predictions. The team rosters have each changed dramatically since last year, so I knew going in that these predictions were probably not going to be that spot on.
+
+---
+
+## Kansas City Royals @ Atlanta Braves
+
+### Predictions
+
+Win probability:  Atlanta Braves 84.8%  |  Kansas City Royals 15.2%
+Predicted total:  9.3 runs
+Run line lean:  Atlanta Braves -1.5
+
+If you chose Atlanta to win and to cover, you were wrong on both accounts, as Kansas City won by a score of 4-1. (0-2)
+
+---
+
+## Minnesota Twins @ Baltimore Orioles
+
+### Predictions
+
+Win probability:  Baltimore Orioles 36.4%  |  Minnesota Twins 63.6%
+Predicted total:  8.8 runs
+Run line lean:  No strong signal
+
+Choosing the Twins to win was incorrect as they lost 8-6. (0-3)
+
+---
+
+## Texas Rangers @ Philadelphia Phillies
+
+### Predictions
+
+Win probability:  Philadelphia Phillies 64.2%  |  Texas Rangers 35.8%
+Predicted total:  8.2 runs
+Run line lean:  No strong signal
+
+Phillies lost 8-3 to the Rangers. (0-4)
+
+---
+
+## Colorado Rockies @ Miami Marlins
+
+### Predictions
+
+Win probability:  Miami Marlins 67.4%  |  Colorado Rockies 32.6%
+Predicted total:  9.0 runs
+Run line lean:  Miami Marlins -1.5
+
+The Marlins beat the Rockies 4-3, which means they did not cover. (1-5)
+
+--- 
+
+## Tampa Bay Rays @ St. Louis Cardinals
+
+### Predictions
+
+Win probability:  St. Louis Cardinals 51.2%  |  Tampa Bay Rays 48.8%
+Predicted total:  9.2 runs
+Run line lean:  No strong signal
+
+This one was essentially a toss-up, so I wouldn't have chose a team either way. We will not score this one. (1-5)
+
+---
+
+## Cleveland Guardians @ Seattle Mariners
+
+### Predictions
+
+Win probability:  Seattle Mariners 53.4%  |  Cleveland Guardians 46.6%
+Predicted total:  9.4 runs
+Run line lean:  No strong signal
+
+Again, since this is within the 45-55 confidence interval, I'd've skipped this one as well.
+
+---
+
+## Overall Performance:
+
+1 win out of 6 chances, or .167. Not looking great, but the season needs to play out a little more. Maybe I'll check back with y'all in May and give the pitchers more time to test out their stuff before we can really evaluate match-ups.

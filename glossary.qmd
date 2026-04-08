@@ -7,21 +7,20 @@ format:
     toc-depth: 2
 ---
 
-ProPlotFits cubre los datos de Baseball Savant en dos lenguas. Los términos de Statcast no tienen equivalentes establecidos en español — así que los estamos creando aquí.
+ProPlotFits analiza los datos de Baseball Savant en dos lenguas. Sin embargo, Statcast no incluya equivalentes establecidos en español para sus termas, así que tenemos que crearlos nosotros mismos.
 
-ProPlotFits covers Baseball Savant data in two languages. Statcast terms have no established Spanish equivalents — so we are creating them here.
-
+ProPlotFits analyzes Baseball Savant data in Spanish, English and R. However, Statcast does not include Spanish equivalents for their terms, so we need to create them ourselves. 
 ---
 
 ## Velosalida · Exit velocity
 
 **¿Qué es?** La velocidad, en millas por hora, a la que la bola salió del bate.
 
-**What is it?** How hard, in miles per hour, a ball was hit by a batter.
+**What is it?** The velocity, in miles per hour, the ball left the bat after being hit.
 
 **¿Por qué importa?** Una velosalida más alta significa más fuerza detrás del batazo. Sin embargo, la velosalida sola no cuenta toda la historia — el lanzángulo determina a dónde va esa fuerza.
 
-**Why does it matter?** Higher velosalida means more force behind the ball. But velosalida alone does not tell the whole story — lanzángulo determines where that force goes.
+**Why does it matter?** Higher velosalida means more force behind the ball. But it does not tell the whole story alone — lanzángulo determines where that force goes.
 
 **Fuente / Source:** [MLB Statcast Glossary](https://www.mlb.com/glossary/statcast/exit-velocity)
 

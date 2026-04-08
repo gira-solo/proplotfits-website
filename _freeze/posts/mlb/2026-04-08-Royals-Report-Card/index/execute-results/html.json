@@ -1,0 +1,16 @@
+{
+  "hash": "b71b7e8d3b3473e02bee66efff036926",
+  "result": {
+    "markdown": "---\ntitle: \"Royals vs. Guardians · 2026-04-07\"\ndescription: \"Velosalida y lanzángulo · Atlanta, GA\"\ndate: \"April 8, 2026\"\ncategories: [royals, 2026, game-report, cleveland-guardians]\nimage: report_cards/royals_2026-04-08_guardians.png\nauthor: \"Peter Fortunato\"\n---\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=1800}\n:::\n:::\n\n## El sweet spot\n\nSolo hubo one hit, dentro el sweet spot por un home run, pero todo las otras opportunities fueron outs. Salvy again encontró el sweet spot, pero para un out.\n\nOverall, buen trabajo para Jensen.\n\n## Debajo de la media\n\nWitt needs to pick it up. \n\n## Mirando adelante\n\nEspero que encontremos more opportunities to connect, pero it seems like los Royals todavía tienen mucha fría. They are still feeling cold.\n\n------------------------------------------------------------------------\n\n*Fuente: Baseball Savant · ProPlotFits*\n\n\n\n\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

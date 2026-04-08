@@ -1,7 +1,7 @@
 ---
 title: "Royals vs. Braves · 2026-03-27"
 description: "Velosalida y lanzángulo · Atlanta, GA"
-date: last-modified
+date: "March 28, 2026"
 categories: [royals, 2026, game-report, atlanta-braves]
 author: "Peter Fortunato"
 ---
@@ -14,7 +14,7 @@ author: "Peter Fortunato"
 #| warning: false
 
 source(here::here("functions/game_report.R"))
-plot_game_report("2026-03-27", "Braves")
+plot_game_report("2026-03-27", "Braves", "ATL")
 ```
 
 ## El sweet spot
